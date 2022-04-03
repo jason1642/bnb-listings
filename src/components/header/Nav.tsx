@@ -134,7 +134,9 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
         <Button onClick={handleLogout} to='/'>Log Out</Button>
         </>
         :
-        <><Button to='/login'>Log In</Button>
+        <>
+
+          <Button to='/login'>Log In</Button>
           <Button to='/'>View Houses</Button>
           <Button to='/register'>Register</Button>
         </>

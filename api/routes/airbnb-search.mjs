@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import {ListingsAndReviews as Listings} from '../models/listing.mjs';
 import _ from 'lodash';
+import sift from 'sift';
 // Path : /api/airbnb/listings
 
 const airbnbHomeRouter = express.Router();
@@ -16,29 +17,32 @@ airbnbHomeRouter.get('/all', async (req, res, next) => {
   
 })
 
-// _.captialize() caps first letter in string then lowercases the rest
+airbnbHomeRouter.get('/rooms/:_id', async (req, res, next) => {
+  await Listings.findOne({ _id: req.params._id }).then(ele => {
+    console.log(req.params._id)
+    res.send(ele);
+  }, err=> res.status(404).send("Cannot find match"))
+})
 
-// Soley reliant on params to query info
+
 // docs say query entries should be validated since users can put anything in url
 airbnbHomeRouter.get('/query', async (req, res, next) => {
-  // req.query returns object of params set in axios method
-  // Having multiple query params will look for documents matching all their values together only
-// =====
-  // use for ...in to loop through query object - for (const item in items) { }
-  // to get matching documents for each, then combine then into one array and filter duplicate _ids, maybe using lodash
-  // =====
-  const listings = await Listings.find(req.query).limit(5)
-  console.log(listings)
+// Query one at a time, just insert req.query, handle params in front end
+  console.log(req.query) 
+  const listings = Object.keys(req.query).length > 0 && await Listings
+    .find(req.query)
+    .limit(100)
+    // .select( ["address.country","property_type"])
   if (listings.length === 0) return res.status(404).send("cannot find matches")
   // Listings.find() returns an array even if empty, Listings.findOne() returns an object
 
   console.log('skipped over errors')
   return res.send(listings)
 
-} )
+} ) 
  
  
-
+  
  
 
 

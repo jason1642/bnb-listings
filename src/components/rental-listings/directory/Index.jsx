@@ -7,18 +7,21 @@ import Card from './Card'
 
 
 const Container = styled.div`
+    /* background-color: #807770; */
+
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   flex-direction: column;
-  padding-top: 50px;
+  padding-top: 40px;
   /* border: 1px solid black; */
   `;
 const Header = styled.div`
   
   `
 const Title = styled.div`
-
+  font-size: 35px;
+  font-weight: 300;
 `
 const CardContainer = styled.div`
   display: flex;
@@ -35,25 +38,26 @@ const Index = () => {
 
   const [listings, setListings] = useState();
 
+  const handleFilter = data => {
+    setListings(data)
+  }
   useEffect(() => {
-    // axios.get('http://localhost:5040/api/airbnb/listings/all').then(res => {
-    //   console.log(res.data);
-    //   setListings(res.data)
-    // }, err => console.log(err))
-  }, [])
+    console.log(listings)
+  }, [listings])
 
   return (<Container>
     <Header>
-      his is the directory
-    <Filter />
+      <Title>Search </Title>
+      <Filter
+    handleFilter={handleFilter}  />
     </Header>
-    T
+    
     
     <CardContainer>
 
-  
+    
     {
-      listings && listings.map((data, i) => 
+      listings && listings.length > 0 && listings.map((data, i) => 
         <Card
           key={i}
           data={data} />

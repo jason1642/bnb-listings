@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-
-export const Container = styled.div`
+import { Link } from 'react-router-dom';
+export const Container = styled(Link)`
   display: flex;
   width: 260px;
   flex-direction: column;
   margin: 5px;
-
+  text-decoration: none;
+  color: black;
   @media (min-width: 1000px) {
     width: 260px;
   }

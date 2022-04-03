@@ -10,7 +10,8 @@ const Main = styled.div`
   width: 100%;
   height: 40px;
   max-height: 50px;
-  background-color: #796049b1
+  /* background-color: #796049b1 */
+  background-color: #807770;
 ;
   z-index: 6000;
 ; 
@@ -25,7 +26,20 @@ const LogoContainer = styled(Link)`
 `;
 
 
-
+const Button = styled(Link)`
+  /* background-color: green; */
+  height: 100%;
+  text-decoration: none;
+  color: #e1dfdf;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  &:hover{
+    cursor: pointer;
+  }
+`;
 
 const Index = (props) => {
 
@@ -38,7 +52,16 @@ const Index = (props) => {
     <Logo src={siteLogo}/>
     </LogoContainer>
     {currentUser.authenticated ? 'Welcome,' +  currentUser.username : 'please log in' }
-    <Nav currentUser={currentUser}/>
+          
+    <div style={{
+      height: '100%',
+      display: 'flex',
+      flexDirection: "row",
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}><Button to='/directory'>Search Rooms</Button>
+
+    <Nav currentUser={currentUser} /></div>
   </Main>)
 };
 

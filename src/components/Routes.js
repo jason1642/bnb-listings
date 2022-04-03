@@ -5,7 +5,7 @@ import Login from './login-register/Login'
 import Register from './login-register/Register';
 import { useSelector} from 'react-redux';
 import Directory from './rental-listings/directory/Index.jsx'
-import PropertyInfo from './rental-listings/single-listing-page/PropertyInfo'
+import PropertyInfo from './rental-listings/single-listing-page/PropertyInfo.tsx'
 const SiteRoutes = () => {
   
   const currentUser = useSelector(state => state.currentUser)
@@ -16,7 +16,7 @@ const SiteRoutes = () => {
     { path: '/login', element: currentUser.authenticated ? <Navigate to='/' replace /> : <Login /> },
     { path: '/register', element: currentUser.authenticated ? <Navigate to='/' replace /> : <Register /> },
     {path: '/directory', element: <Directory />},
-    {path: '/property/:id', element: <PropertyInfo />},
+    {path: '/listings/:_id', element: <PropertyInfo />},
     // {path: '/', element: <HomePage />},
   ])
 }
