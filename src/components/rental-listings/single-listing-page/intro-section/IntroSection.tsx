@@ -7,7 +7,7 @@ import SeeMoreModal  from './SeeMoreModal.tsx';
 
 const Container = styled.div`
   width: 95%;
-  height: 80vh;
+  height: 70vh;
   display: flex;
   padding-top: 20px;
  

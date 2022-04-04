@@ -18,7 +18,7 @@ const Title = styled.div`
 const Content = styled.div`
   font-weight: 300;
   font-size: 11px;
-  line-height: 24px;
+  line-height: 23px;
 `;
 const Wrapper = styled.div`
 

@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import IntroSection from './intro-section/IntroSection.tsx';
-
+import SecondSection from './second-section/SecondSection.tsx';
+import ReviewSection from './review-section/ReviewSection.tsx';
 
 const Container = styled.div`
   padding-top: 40px;
@@ -46,7 +47,11 @@ const SingleListingPage = () => {
     {listingData && <>
       <IntroSection
         data={listingData} />
-    </>}
+    
+
+    <SecondSection data={listingData} />
+
+    <ReviewSection data={listingData} /></>}
   </Container> );
 }
  

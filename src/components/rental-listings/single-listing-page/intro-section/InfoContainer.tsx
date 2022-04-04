@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { BsDot } from "react-icons/bs";
+
+
 
 
 import styled from 'styled-components';
@@ -21,6 +24,14 @@ const styles = {
     lineHeight: '15px',
     // padding: '2px',
     color: '#4c4c4c',
+  },
+  spanStyle: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    height: '100%',
+
   }
 }
 
@@ -46,13 +57,20 @@ const Title = styled.div`
 
 const DetailRow = styled.div`
   display: flex;
-  width: 80%;
-  padding: 5px 10px;
+  width: 100%;
+  padding: 0px 10px;
+  font-size: 12px;
+  color: #474747;
+  justify-content: flex-start;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167); */
 
 `
 const Item = styled.div`
     /* border: 1px solid black; */
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 `
 const Header = styled.div`
   
@@ -63,12 +81,13 @@ const Main = styled.div`
 `;
 const SuperHost  = styled.div`
   width:100%;
-  border-radius: 10px;
+  border-radius: 6px;
   /* border: 1px solid black; */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167);
-
-  height: 60px;
-  padding: 0;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167); */
+  background-color: #adffad;
+  /* color: white; */
+  /* height: 60px; */
+  padding: 3px 0;
 `;
 const Description = styled.div`
   padding: 10px;
@@ -79,6 +98,7 @@ const Description = styled.div`
   font-weight: 400;
   text-align: left;
   line-height: 20px;
+  padding: 15px 12px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 const Button = styled.button`
@@ -91,6 +111,23 @@ const Button = styled.button`
     cursor: pointer;
   }
 `;
+const Price = styled.div`
+  /* width: 30px; */
+  height: 100%;
+
+`
+const RowTwo = styled.div`
+  display: flex;
+  padding: 3px 0;
+  border-radius: 2px;
+  justify-content: space-around;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167);
+
+
+`;
+const SpanItem = styled.div`
+
+`
 interface IInfoContainerProps {
 }
 
@@ -105,17 +142,28 @@ const InfoContainer = ({ data, openModal }) => {
       <Header>
       <Title>
         {data.name}
-      </Title>
+        </Title>
+        <RowTwo>
+          <SpanItem style={{color: 'purple'}}>
+            Reviews: ({data.reviews.length})
+        </SpanItem>
+          <SpanItem style={{color: 'green'}}>
+            Rating: {data.review_scores.review_scores_rating}
+          </SpanItem>
+        <Price>Price: {data.price.$numberDecimal ? data.price.$numberDecimal : data.price}$ / night</Price>
+        </RowTwo>
       <DetailRow>
-        <Item> Guests: {data.accomodates }</Item>
-        <Item> Bedrooms: {data.bedrooms }</Item>
-        <Item> Beds: {data.beds }</Item>
+        <Item> Guests: {data.accommodates } <BsDot />
+</Item>
+        <Item> Bedrooms: {data.bedrooms }<BsDot /></Item>
+        <Item> Beds: {data.beds }<BsDot /></Item>
         <Item> Bath: {Math.ceil(data.bathrooms.$numberDecimal) }</Item>
-      </DetailRow>
+        </DetailRow>
+        
 </Header>
 
       <Main>
-        {!data.host.host_is_superhost &&
+        {data.host.host_is_superhost &&
           <SuperHost>
             <p
               style={styles.superhostTitle}
