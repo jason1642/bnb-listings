@@ -31,11 +31,11 @@ authRouter.post('/', async (req, res) => {
   let user = await User.findOne({ username: req.body.username });
 
   if (!user) {
-    console.log(req.body)
+    
 
       return res.status(400).send('Incorrect username or password.');
   }
-
+console.log(user)
   // Then validate the Credentials in MongoDB match those provided in the request.
   // Will return false if password was not encrypted during creation despite matching.
   // Shall not accept matching unencrpyted password for security reasons.
@@ -46,7 +46,7 @@ authRouter.post('/', async (req, res) => {
     
   // If verified, return a jwt, and user id & username
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.header('x-auth-token', token).send({ token, user: _.pick(user, ['_id', 'username']) });
+  res.header('x-auth-token', token).send({ token, user: _.pick(user, ['_id', 'email', 'username', 'created_at', 'updated_at', 'favorites']) });
   console.log(req.headers)
 });
 
@@ -66,7 +66,7 @@ authRouter.post('/verify', async (req, res, next) => {
       if (err) return res.status(403).send('invalid token')
 
 
-      await User.findOne({ _id: user._id }).then(userRes=>res.send(userRes))
+      return await User.findOne({ _id: user._id }).then(userRes=>res.send(userRes))
       
     }  
   );

@@ -22,7 +22,6 @@ export const registerUser = async (registerData: RegisterData, navigate: Functio
       navigate('/');
       window.location.reload();
     }).catch(err => {
-      // console.log(err);
       // console.log('Sorry, your username or password is unavailable to use, try again');
       return err;
     });
@@ -56,6 +55,10 @@ export const addFavorite = async (user_id, listing_id) => {
 
 
 
+export const getAllFavorites = async (user_id: string) =>
+  await api.post(`/api/user/get-all-favorites-data`,
+    { _id: user_id })
+    .then(res => res, err => err)
 
 
 
@@ -74,11 +77,12 @@ export const verifyUser = async () => {
   const token = localStorage.getItem("authToken");
   if (token) {
     api.defaults.headers.common.authorization = `Bearer ${token}`;
-    return api.get('/user/auth/verify')
+    return await api.get('/user/auth/verify')
       .then(res => {
         return res.data
       }, err => null)
   }
+  return false;
 }
 
 export const removeToken = () => {

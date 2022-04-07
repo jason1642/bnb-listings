@@ -16,7 +16,7 @@ export const logInUser = (userInput: any) => {
       
       dispatch({
         type: Constants.LOG_IN_USER,
-        payload: userInput
+        payload: res
       })
     })
       .catch(err => {
@@ -34,12 +34,12 @@ return (dispatch: any) => {
   const token = localStorage.getItem('authToken')
   
 
-    api.post('/api/user/auth/verify',
+    return api.post('/api/user/auth/verify',
       {
       token: token
     }).then(res => {
-      console.log("success verify")
-      dispatch({
+      // console.log("success verify")
+      return dispatch({
         type: Constants.VERIFY_USER,
         payload: res.data
       })
@@ -49,7 +49,7 @@ return (dispatch: any) => {
       payload: undefined
     }))
   
-  
+    
   }
 }
 export const logOutUser = () => {

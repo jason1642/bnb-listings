@@ -3,6 +3,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import _ from 'lodash';
 import config from 'config';
+import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import { verifyUser } from '../middleware/verify-user.mjs'
@@ -37,13 +38,16 @@ userRouter.post('/create', async (req, res) => {
     
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
+    const currentTime = moment().format();
 
+    user.created_at = currentTime;
+    user.updated_at = currentTime;
     
     await user.save();
     console.log("User created!")
     const token = jwt.sign({ _id: user._id }, config.get('PrivateKey'));
     
-    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'username', 'email']));
+    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'username', 'email', 'created_at','updated_at']));
   }
 });
 
@@ -55,7 +59,7 @@ userRouter.get('/:id', async (req, res, next) => {
   if (!user) {
     return res.status(400).send('User doesn\t exist');
   } else {
-    res.send(_.pick(user, ['username', '_id', 'email']));
+    res.send(_.pick(user, ['username', '_id', 'email', 'created_at', 'updated_at']));
 }
 
 })
@@ -96,20 +100,24 @@ userRouter.post('/add-favorite/', async(req,res,next) => {
 // 
 
 })
+ 
 
 
-
-userRouter.get('/get-all-favorites-data/:id', async (req, res, next) => {
-  const user = await User.findOne({ _id: req.params.id })
-  if (!user) return res.status(404).res('User not found')
+userRouter.post('/get-all-favorites-data', async (req, res, next) => {
+  const user = await User.findOne({ _id: req.body._id })
+  console.log(req.body
+  )
+  if (!user) return res.status(404).send('User not found')
 
   const favoritesList = await Listings.find({
-    in$: {
-      _id: user.favorites
+    _id: {
+      $in: user.favorites
     }
   })
-  console.log(favoritesList);
-  return res.status(201).send("testing")
+  
+  if (user.favorites.length === 0) return res.status(200).send([])
+  console.log("success get fav")
+  return res.status(201).send(favoritesList)
 })
 
 

@@ -17,14 +17,14 @@ app.use('/api/user/auth', authRouter);
 app.use('/api/airbnb/listings', airbnbHomeRouter);
 app.listen(port, () => console.log('listening on port ' + port));
 
-
+ 
 
 if (!config.get('PrivateKey')) {
   console.error('FATAL ERROR: PrivateKey is not defined.');
   process.exit(1);
 }
 
-
+ 
  
 
 connectDatabase();

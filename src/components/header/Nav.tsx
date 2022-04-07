@@ -108,7 +108,7 @@ const handleLogout = ( ) => {
 
 const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => {
 
-  const [isOpen, setIsOpen] = useState<boolean>(undefined);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const dispatch = useDispatch()
 
   const {logUser} = bindActionCreators(userActions, dispatch);
@@ -133,9 +133,9 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
 
       {currentUser.authenticated ?
         <>
-        <Button onClick={handleClose} to='/'>View Houses</Button>
-          <Button onClick={handleClose} to='/'>View Favorites</Button>
-          <Button to={`/account/${currentUser._id}`}>My Account</Button>
+        <Button  to='/directory'>View Houses</Button>
+          <Button  to='/account/favorites'>View Favorites</Button>
+          <Button to={`/account`}>My Account</Button>
           <Button onClick={() => {
             handleLogout()
             handleClose()
@@ -144,9 +144,9 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
         </>
         :
         <>
-          <Button onClick={handleClose} to='/login'>Log In</Button>
-          <Button onClick={handleClose} to='/'>View Houses</Button>
-          <Button onClick={handleClose} to='/register'>Register</Button>
+          <Button  to='/login'>Log In</Button>
+          <Button to='/directory'>View Houses</Button>
+          <Button  to='/register'>Register</Button>
         </>
       }
       </Container>
