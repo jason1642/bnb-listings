@@ -15,17 +15,20 @@ function App() {
   const currentUser = useSelector((state) => state.currentUser)
   const dispatch = useDispatch()
   // Returns the state from the store.js folder in redux
-  const { logInUser } = bindActionCreators(userActions, dispatch);
+  const { verifyUser } = bindActionCreators(userActions, dispatch);
+  
+  
   useEffect(() => {
-   console.log(currentUser)
-    
-  },[currentUser])
+    verifyUser()
+    console.log(currentUser)
+  },[])
   // returns an object with action methods from imported action folder
   // should be deconstructed
   // Can be used to manipulate the state, given a function with the parameter of the value being used to change the state 
-  // console.log(console.log(depositMoney))
+useEffect(() => {
   console.log(currentUser)
-  // console.log(amount)
+}, [currentUser]);
+
   return (
     <div className="App">
       <Header />

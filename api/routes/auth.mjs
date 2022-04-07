@@ -13,6 +13,11 @@ const loginSchema = Joi.object({
   username: Joi.string().min(4).max(50).trim().required(),
   password: Joi.string().min(5).max(255).trim().required()
 })
+
+
+
+
+
 authRouter.post('/', async (req, res) => {
   // First use mongoose schema with Joi validator to see if username and
   // password are valid input, not valid matching password
@@ -35,29 +40,33 @@ authRouter.post('/', async (req, res) => {
   // Will return false if password was not encrypted during creation despite matching.
   // Shall not accept matching unencrpyted password for security reasons.
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  console.log(req.body, process.env.TOKEN_SECRET)
+  console.log(req.body,validPassword)
 
   if (!validPassword) return res.status(400).send('Incorrect email or password.');
     
   // If verified, return a jwt, and user id & username
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.send({ token, user: _.pick(user, ['_id', 'username']) });
-
+  res.header('x-auth-token', token).send({ token, user: _.pick(user, ['_id', 'username']) });
+  console.log(req.headers)
 });
 
 
+ 
 
 
-
-authRouter.get('/verify', async(req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  if (token == null) res.status(403);
+authRouter.post('/verify', async (req, res, next) => {
+  console.log(req.body)
+  // const authHeader = req.headers['authorization'];
+  // const token = authHeader && authHeader.split(' ')[1];
+  // if (token == null) return res.status(403).send('no token found');
   
-  jwt.verify(token, process.env.TOKEN_SECRET,
+  jwt.verify(req.body.token, process.env.TOKEN_SECRET,
     async (err, user) => {
-      err && res.status(403)
-      await User.findOne({ _id: user._id }).then(user=>res.send(user))
+      console.log(user)
+      if (err) return res.status(403).send('invalid token')
+
+
+      await User.findOne({ _id: user._id }).then(userRes=>res.send(userRes))
       
     }  
   );

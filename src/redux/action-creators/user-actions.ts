@@ -20,14 +20,38 @@ export const logInUser = (userInput: any) => {
       })
     })
       .catch(err => {
-      // console.log('CANNOT LOG IN')
+      console.log('CANNOT LOG IN')
       dispatch({
         type:  Constants.LOG_IN_FAIL,
         payload: userInput
       })})}}
 
+export const verifyUser = () => {
+//   const config = {
+//     headers: { Authorization: `Bearer ${token}` }
+// };
+return (dispatch: any) => {
+  const token = localStorage.getItem('authToken')
+  
 
+    api.post('/api/user/auth/verify',
+      {
+      token: token
+    }).then(res => {
+      console.log("success verify")
+      dispatch({
+        type: Constants.VERIFY_USER,
+        payload: res.data
+      })
 
+    }, () => dispatch({
+      type: Constants.VERIFY_USER_FAIL,
+      payload: undefined
+    }))
+  
+  
+  }
+}
 export const logOutUser = () => {
 
   return (dispatch: any) => dispatch({
@@ -74,22 +98,3 @@ export const registerUser = (userInput: RegisterData) => {
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
- 
-  
-

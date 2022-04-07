@@ -5,9 +5,10 @@ import _ from 'lodash';
 import config from 'config';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
+import { verifyUser } from '../middleware/verify-user.mjs'
+import { ListingsAndReviews as Listings } from '../models/listing.mjs';
 const userRouter = express.Router();
-
-
+ 
 // ========================================
 // ======== REGISTER/CREATE USER ==========
 // ========================================
@@ -24,7 +25,9 @@ userRouter.post('/create', async (req, res) => {
     $or: [
       { username: req.body.username },
       { email: req.body.email }
-    ]});
+    ]
+  });
+
   if (user) {
       return res.status(400).send('That username or email is already taken.');
   } else {
@@ -56,5 +59,62 @@ userRouter.get('/:id', async (req, res, next) => {
 }
 
 })
+
+
+
+// Verify through middleware first 
+userRouter.get('/account/:id', verifyUser, (req, res) => { 
+  
+  res.send("this is the response")
+}
+)
+
+
+
+// CAN REMOVE LISTING IF ALREADY EXISTS
+userRouter.post('/add-favorite/', async(req,res,next) => {
+  // req : {listing_id or instance, user id }
+  const user = await User.findOne({ _id: req.body._id })
+  console.log(req.body)
+  console.log(user)
+  if (user == null) return res.status(404).res('User not found')
+
+  const listing = await Listings.findOne({ _id: req.body.listing_id })
+  if (listing == null) return res.status(404).res("listing not found")
+  console.log(listing._id)
+  const doesListingExist = user.favorites.findIndex(ele => ele === listing._id)
+  console.log(doesListingExist, 'exists?')
+  if (doesListingExist === -1) user.favorites.push(listing._id)
+  else user.favorites.splice(doesListingExist, 1)
+
+
+
+
+  user.save()
+
+  res.send("Favorite added")
+// 
+
+})
+
+
+
+userRouter.get('/get-all-favorites-data/:id', async (req, res, next) => {
+  const user = await User.findOne({ _id: req.params.id })
+  if (!user) return res.status(404).res('User not found')
+
+  const favoritesList = await Listings.find({
+    in$: {
+      _id: user.favorites
+    }
+  })
+  console.log(favoritesList);
+  return res.status(201).send("testing")
+})
+
+
+
+
+
 
 export { userRouter };

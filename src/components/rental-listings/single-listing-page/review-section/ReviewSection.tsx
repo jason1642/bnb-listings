@@ -7,20 +7,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import _ from 'lodash';
 import { SingleReview } from './SingleReview.tsx';
 
-
 const Container = styled.div`
   min-height: 70vh;
   display: flex;
   /* justify-content: center; */
   flex-direction:column ;
   align-items: flex-start;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 90%;
 `;
 interface IReviewSectionProps {
 }
 const Title = styled.div`
-  border: 1px solid black;
+  border-top: 1px solid black;
   width: 100%;
   text-align: left;
   padding: 15px;
@@ -34,7 +33,7 @@ const StatsTable = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
 `
 const ReviewContainer = styled.div`
@@ -69,6 +68,7 @@ const ReviewSection = ({ data }) => {
   },[])
   return (
     <Container>
+      {review_scores&& review_scores.review_scores_rating !== undefined ? <>
       <Title><BsFillStarFill style={{marginRight:'4px'}} /> {review_scores.review_scores_rating} | {reviews.length} Reviews</Title>
       <StatsTable>
 
@@ -93,7 +93,10 @@ const ReviewSection = ({ data }) => {
               data={e}
           />)}
 
-      </ReviewContainer>
+      </ReviewContainer></>
+        :
+        <>
+        No reviews yet</>}
     </Container>
   );
 };

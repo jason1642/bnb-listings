@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
-// const Number = require("mongoose-Number").loadType(mongoose);
-const ListingsAndReviews = mongoose.model('listing',
-  new mongoose.Schema({
+const listingsSchema = new mongoose.Schema({
   _id: String,
     access: String,
   accommodates: Number,
@@ -102,7 +100,11 @@ const ListingsAndReviews = mongoose.model('listing',
   weekly_price: { type: mongoose.Decimal128, required: false}
 },
 // 'ListingsAndReview'
-))
+)
 
 
-export {ListingsAndReviews}
+// const Number = require("mongoose-Number").loadType(mongoose);
+const ListingsAndReviews = mongoose.model('listing', listingsSchema)
+
+
+export {ListingsAndReviews, listingsSchema}

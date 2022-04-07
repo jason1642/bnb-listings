@@ -39,7 +39,7 @@ const styles = {
   bmMenuWrap: {
     width: '200px',
     marginTop: '10px',
-    marginRight: '20px',
+    marginRight: '0px',
     
   },
   bmMenu: {
@@ -55,7 +55,7 @@ const styles = {
     color: '#b8b7ad',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center'
   },
   bmItem: {
@@ -73,6 +73,7 @@ const styles = {
 interface INavProps {
   
   currentUser: {
+    _id: string,
     username: string,
     password: string,
     authenticated: boolean
@@ -95,9 +96,9 @@ const Button = styled(Link)`
   justify-content: center;
   align-items: center;
 `   
-const handleLogout = (setUser ) => {
+const handleLogout = ( ) => {
   localStorage.clear();
-  setUser(null)
+  // setUser(null)
   removeToken();
   console.log('You are logged out')
   window.location.reload();
@@ -107,20 +108,23 @@ const handleLogout = (setUser ) => {
 
 const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => {
 
-  const [isOpen, setIsOpen] = useState<boolean>();
+  const [isOpen, setIsOpen] = useState<boolean>(undefined);
   const dispatch = useDispatch()
 
   const {logUser} = bindActionCreators(userActions, dispatch);
 
-  useEffect(() => {
-    console.log(currentUser)
-  },[])
+  const handleClose = () => {
+    setIsOpen(false)
+    console.log(isOpen)
+  }
+
 
 
   return (
 
     <Container
       isOpen={isOpen}
+      onOpen={()=>setIsOpen(true)}
       right
       styles={styles}   
       outerContainerId={"outer-container"}
@@ -129,16 +133,20 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
 
       {currentUser.authenticated ?
         <>
-        <Button to='/'>View Houses</Button>
-        <Button to='/'>View Favorites</Button>
-        <Button onClick={handleLogout} to='/'>Log Out</Button>
+        <Button onClick={handleClose} to='/'>View Houses</Button>
+          <Button onClick={handleClose} to='/'>View Favorites</Button>
+          <Button to={`/account/${currentUser._id}`}>My Account</Button>
+          <Button onClick={() => {
+            handleLogout()
+            handleClose()
+          }
+          } to='/'>Log Out</Button>
         </>
         :
         <>
-
-          <Button to='/login'>Log In</Button>
-          <Button to='/'>View Houses</Button>
-          <Button to='/register'>Register</Button>
+          <Button onClick={handleClose} to='/login'>Log In</Button>
+          <Button onClick={handleClose} to='/'>View Houses</Button>
+          <Button onClick={handleClose} to='/register'>Register</Button>
         </>
       }
       </Container>

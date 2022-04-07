@@ -53,7 +53,7 @@ export const InfoContainer = styled.div`
   padding: 10px 0;
   display: flex;
   flex-direction: column;
-  font-size: .2em;
+  font-size: .6em;
   /* line-height: 20px; */
 `
 
@@ -88,4 +88,7 @@ export const Country = styled.div`
 
 `;
 
-export const FavButton = styled.div``
+export const FavButton = styled.button`
+  position: absolute;
+  
+`

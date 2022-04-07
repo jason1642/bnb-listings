@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import mongoose from 'mongoose';
-
+import { ListingsAndReviews, listingsSchema } from './listing.mjs';
 
 const User = mongoose.model('User', new mongoose.Schema({
   _id: {
@@ -22,9 +22,10 @@ const User = mongoose.model('User', new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 5,
+    minlength: 5, 
     maxlength: 1024
-  }
+  },
+  favorites: [{type: String, ref: 'ListingsAndReviews'}]
 }));
 
 const validateUser = user => {

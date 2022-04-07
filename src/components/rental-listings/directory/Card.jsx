@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import React, {  useRef } from 'react';
+// import styled from 'styled-components';
 
 import {
   Container,Image, Country, PropertyType, ImageContainer, InfoContainer, Name, Title, Price,RowOne,RowTwo,FavButton} from './card-styles'
@@ -15,7 +15,8 @@ const Card = ({data}) => {
 
   return (<Container to={`/listings/${data._id}`} ref={hideContainer} >
     <ImageContainer>
-      <Image onError={()=>hideContainer.current.style.display= "none"} src={data.images.picture_url} alt="Listings House"/> 
+      <Image onError={() => hideContainer.current.style.display = "none"} src={data.images.picture_url} alt="Listings House" /> 
+      
     </ImageContainer>
     
 

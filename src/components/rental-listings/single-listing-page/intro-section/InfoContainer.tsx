@@ -147,9 +147,9 @@ const InfoContainer = ({ data, openModal }) => {
           <SpanItem style={{color: 'purple'}}>
             Reviews: ({data.reviews.length})
         </SpanItem>
-          <SpanItem style={{color: 'green'}}>
+          {data.review_scores && <SpanItem style={{color: 'green'}}>
             Rating: {data.review_scores.review_scores_rating}
-          </SpanItem>
+          </SpanItem>}
         <Price>Price: {data.price.$numberDecimal ? data.price.$numberDecimal : data.price}$ / night</Price>
         </RowTwo>
       <DetailRow>

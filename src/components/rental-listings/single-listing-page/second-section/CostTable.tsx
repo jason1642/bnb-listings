@@ -125,7 +125,7 @@ const CostTable = ({ data }) => {
 
 
           <Label>Cleaning fee</Label>
-          <Cost>${data.cleaning_fee.$numberDecimal ? data.cleaning_fee.$numberDecimal : data.cleaning_fee}</Cost>
+          <Cost>${data.cleaning_fee && data.cleaning_fee.$numberDecimal ? data.cleaning_fee.$numberDecimal : data.cleaning_fee}</Cost>
         </Row>
         <Row>
           <Label>${Math.ceil( data.extra_people.$numberDecimal ? data.extra_people.$numberDecimal : data.extra_people )} / Extra guests (Max = {data.accommodates})</Label><Cost>${Math.ceil(numExtraPeople * data.extra_people.$numberDecimal)}</Cost>
@@ -175,8 +175,8 @@ const CostTable = ({ data }) => {
           nightState: numNights,
           nightPrice: data.price.$numberDecimal,
           extraState: numExtraPeople,
-          extraPrice: data.extra_people.$numberDecimal,
-          cleaningFee: data.cleaning_fee.$numberDecimal
+          extraPrice: typeof data.extra_people !== 'object' ? data.extra_people : data.extra_people.$numberDecimal,
+          cleaningFee: data.cleaning_fee ? data.cleaning_fee.$numberDecimal : 0
         })
         .toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</Span>
       </Total></Row>

@@ -106,17 +106,20 @@ const Item = styled.div`
 
 export function Amenities ({data}) {
   return (
-    <Container>
-      <Title>
+    <Container><Title>
         What this place has to offer
       </Title>
+      {data.amenities.length > 1 ? 
+      <>
       {
         data && data.amenities.map(ele => 
           ele !== 'translation missing: en.hosting_amenity_50' &&  <Item>
             {data && renderIcon(ele) }{ele}
           </Item>
         )
-      }
+      }</>
+        : <Item style={{alignSelf:'center', margin: '0 auto', boxShadow: 'none'}}>No amenities lists</Item>
+    }
     </Container>
   );
 }

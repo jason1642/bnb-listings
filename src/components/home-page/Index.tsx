@@ -50,7 +50,7 @@ interface IIndexProps {
 const Index: React.FunctionComponent<IIndexProps> = (props) => {
   return (
     <Container>
-      <Title>Bed and Breakfast</Title>
+      <Title>My Airbnb</Title>
       <Section>
         <ImageContainer>
         <Image src={'https://images.unsplash.com/photo-1648474814989-5f5be1d39aa3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1399&q=80'} />

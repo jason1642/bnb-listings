@@ -44,6 +44,30 @@ interface LoginData {
 //   }).catch(err => console.log('CANNOT LOG IN'))
 
 
+export const addFavorite = async (user_id, listing_id) => {
+  await api.post('/api/user/add-favorite', {
+    listing_id: listing_id,
+    _id: user_id
+  }).then(res => {
+    console.log(res)
+  }, err => console.log(err))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export const verifyUser = async () => {

@@ -1,8 +1,7 @@
 import express from 'express';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 import {ListingsAndReviews as Listings} from '../models/listing.mjs';
-import _ from 'lodash';
-import sift from 'sift';
+// import _ from 'lodash';
 // Path : /api/airbnb/listings
 
 const airbnbHomeRouter = express.Router();
@@ -63,9 +62,18 @@ export default airbnbHomeRouter;
 
 
 
-// airbnbHomeRouter.get('/', async (req, res, next) => {
-  
-// })
+airbnbHomeRouter.get('/areas/:name', async (req, res, next) => {
+  await Listings.find({ "address.market": req.params.name }).limit(100).then(ele => {
+    console.log(ele)
+    res.send(ele);
+  }, err=> res.status(404).send("Cannot find match"))
+})
+
+
+
+
+
+
 // airbnbHomeRouter.get('/', async (req, res, next) => {
   
 // })

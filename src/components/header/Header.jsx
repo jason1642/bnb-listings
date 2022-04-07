@@ -51,7 +51,7 @@ const Index = (props) => {
 
     <Logo src={siteLogo}/>
     </LogoContainer>
-    {currentUser.authenticated ? 'Welcome,' +  currentUser.username : 'please log in' }
+    {currentUser.authenticated ? 'Welcome,' +  currentUser.username : 'You are not logged in' }
           
     <div style={{
       height: '100%',
