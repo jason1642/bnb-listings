@@ -35,19 +35,19 @@ authRouter.post('/', async (req, res) => {
 
       return res.status(400).send('Incorrect username or password.');
   }
-console.log(user)
+// console.log(user)
   // Then validate the Credentials in MongoDB match those provided in the request.
   // Will return false if password was not encrypted during creation despite matching.
   // Shall not accept matching unencrpyted password for security reasons.
   const validPassword = await bcrypt.compare(req.body.password, user.password);
-  console.log(req.body,validPassword)
+  // console.log(req.body,validPassword)
 
   if (!validPassword) return res.status(400).send('Incorrect email or password.');
-    
   // If verified, return a jwt, and user id & username
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.header('x-auth-token', token).send({ token, user: _.pick(user, ['_id', 'email', 'username', 'created_at', 'updated_at', 'favorites']) });
-  console.log(req.headers)
+  console.log('this is token' + token)
+  res.header('x-auth-token', token).send( _.assign({token: token},  _.pick(user, ['_id', 'email', 'username', 'created_at', 'updated_at', 'favorites']) ));
+  // console.log(req.headers)
 });
 
 

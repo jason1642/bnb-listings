@@ -12,14 +12,20 @@ const Main = styled.div`
   max-height: 50px;
   /* background-color: #796049b1 */
   background-color: #807770;
-;
   z-index: 6000;
-; 
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 480px) {
+    border-bottom: 1px solid black;
+    max-height: 70px;
+    height: 70px;
+  }
 `; 
 const Logo = styled.img`
   height: 100%;
+  @media (max-width: 480px) {
+    height: 60px;
+  }
 `;
 const LogoContainer = styled(Link)`
   height: 100%;
@@ -40,7 +46,12 @@ const Button = styled(Link)`
     cursor: pointer;
   }
 `;
-
+const LoggedIn = styled.div`
+  
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
 const Index = (props) => {
 
 
@@ -51,7 +62,8 @@ const Index = (props) => {
 
     <Logo src={siteLogo}/>
     </LogoContainer>
-    {currentUser.authenticated ? 'Welcome,' +  currentUser.username : 'You are not logged in' }
+    <LoggedIn>{currentUser.authenticated ? 'Welcome,' + currentUser.username : 'You are not logged in'}
+    </LoggedIn>
           
     <div style={{
       height: '100%',

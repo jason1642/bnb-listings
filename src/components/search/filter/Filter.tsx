@@ -21,7 +21,7 @@ const SearchBanner = styled.div`
 `
 
 const Group = styled.div`
-  
+  display: flex;
 `;
 const myParams = {
 
@@ -38,6 +38,10 @@ const Form = styled.form`
   align-items: center;
 `;
 const Label = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
   /* border: 1px solid black; */
   margin: 0 20px;
   padding: 10px;
@@ -58,7 +62,7 @@ const Title = styled.div`
 
 
 
-const Filter = ({handleFilter}) => {
+const Filter = ({handleFilter, listingsLength}) => {
 
 
   // Filters: country, city, price, beds, accomodation(guests), options from amenities array 
@@ -147,6 +151,14 @@ const Filter = ({handleFilter}) => {
   }   
   
   useEffect(() => {
+    axios.get('http://localhost:5040/api/airbnb/listings/query',
+    { params: { 'address.country': 'United States' } }).then((res) => {
+      setSearchResults(res.data)
+      // console.log(res)
+    }, err => console.log(err));
+}, [])
+
+  useEffect(() => {
     handleFilter(searchResults)
   }, [searchResults])
            
@@ -155,7 +167,8 @@ const Filter = ({handleFilter}) => {
     
     <Form>
       <Title>Filters</Title>
-      <Group><Label>House<Option
+      <Group>
+        <Label>House<Option
         onChange={handleCheckboxChange}
 
         type='checkbox'
@@ -183,10 +196,10 @@ const Filter = ({handleFilter}) => {
       /></Label>
       </Group>
       
-      <Group></Group>
+      {/* <Group></Group> */}
     </Form>
     <SearchBanner>
-      Showing {searchResults.length} results
+      Showing {listingsLength} results
     </SearchBanner>
   </Container> );
 }

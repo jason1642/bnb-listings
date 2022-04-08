@@ -13,6 +13,11 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #807770;
+  @media (max-width: 480px) {
+    /* width: 100%; */
+    padding-top: 100px;
+    align-items: flex-start;
+  }
 `;
 const Form = styled.form`
   display: flex;
@@ -28,17 +33,26 @@ const Form = styled.form`
   /* border: 1px solid black; */
   padding: 50px 20px 80px 20px;
   border-radius: 10px;
+  @media (max-width: 480px) {
+    width: 95%;
+    /* height: 80vh; */
+    justify-content: flex-start;
+  }
 `
 
 const TextInput = styled.input`
   width: 70%;
   padding: 12px;
-  margin: 12px;
+  margin: 14px 0 ;
   border-radius: 10px;
   border-width: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   font-size: 18px;
+  @media (max-width: 480px) {
+    width: 95%;
+    /* height: 80vh; */
+  }
 `
 const SubmitButton = styled.input`
   font-size: 22px;
@@ -46,7 +60,8 @@ const SubmitButton = styled.input`
   padding: 10px;
   border-radius: 15px;
   border-width: 0px;
-  width: 120px;
+  width: 150px;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10px;
   &:hover{
@@ -98,7 +113,7 @@ const Login = () => {
         placeholder='Username'
         type='text'
         value={userInput.username} />
-      
+
 
       <TextInput
         name='password'

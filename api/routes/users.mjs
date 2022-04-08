@@ -81,22 +81,28 @@ userRouter.post('/add-favorite/', async(req,res,next) => {
   const user = await User.findOne({ _id: req.body._id })
   console.log(req.body)
   console.log(user)
-  if (user == null) return res.status(404).res('User not found')
+  if (user == null) return res.status(404).send('User not found')
 
   const listing = await Listings.findOne({ _id: req.body.listing_id })
-  if (listing == null) return res.status(404).res("listing not found")
+  if (listing == null) return res.status(404).send("listing not found")
   console.log(listing._id)
   const doesListingExist = user.favorites.findIndex(ele => ele === listing._id)
   console.log(doesListingExist, 'exists?')
-  if (doesListingExist === -1) user.favorites.push(listing._id)
-  else user.favorites.splice(doesListingExist, 1)
+  if (doesListingExist === -1) {
+    user.favorites.push(listing._id)
+    user.save()
+
+  return res.send("added")
+  }
+  else {
+    user.favorites.splice(doesListingExist, 1)
+    user.save()
+    return res.send("removed")
+}
 
 
 
-
-  user.save()
-
-  res.send("Favorite added")
+  
 // 
 
 })

@@ -12,6 +12,7 @@ const api = axios.create({
 
 interface RegisterData {
   username: string,
+  email: string,
   password: string
 }
 export const registerUser = async (registerData: RegisterData, navigate: Function) => {
@@ -42,15 +43,18 @@ interface LoginData {
 //     return res.data.user;
 //   }).catch(err => console.log('CANNOT LOG IN'))
 
-
-export const addFavorite = async (user_id, listing_id) => {
+type AddRemoveFavorites = (user_id: string, listing_id: string) => Promise<string>
+export const addFavorite: AddRemoveFavorites = async (user_id, listing_id) => 
   await api.post('/api/user/add-favorite', {
     listing_id: listing_id,
     _id: user_id
   }).then(res => {
     console.log(res)
-  }, err => console.log(err))
-}
+    return res.data === 'added' ? 'added' : 'removed'
+  }, err => {
+    console.log(err)
+    return 'removed'
+  })
 
 
 

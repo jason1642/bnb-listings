@@ -7,24 +7,24 @@ const api = axios.create({
 
 export const logInUser = (userInput: any) => {
   // Uses /api/user/auth post to verify credentials, then grants a jwt and user info
-  return (dispatch: any) => {
+  return (dispatch: any) => 
     api.post('/api/user/auth', userInput).then(res => {
-      // console.log(res)
+      console.log(res.data)
 
       localStorage.setItem('authToken', res.data.token);
       api.defaults.headers.common.authorization = `Bearer ${res.data.token}`;
       
-      dispatch({
+      return dispatch({
         type: Constants.LOG_IN_USER,
-        payload: res
+        payload: res.data
       })
     })
       .catch(err => {
       console.log('CANNOT LOG IN')
-      dispatch({
+      return dispatch({
         type:  Constants.LOG_IN_FAIL,
         payload: userInput
-      })})}}
+      })})}
 
 export const verifyUser = () => {
 //   const config = {

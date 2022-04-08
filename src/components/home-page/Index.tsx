@@ -2,11 +2,12 @@ import * as React from 'react';
 import styled from 'styled-components';
 import SuggestionCards from './SuggestionCards';
 import LoginPromo from './loginPromo';
+import { Link } from 'react-router-dom';
+
 const Container = styled.div`
     /* background-color:#57727A; */
     /* background-color:#EECE8F; */
-    background-color:#A89B8D
-;
+    background-color:#A89B8D;
 
   height: 100%;
   padding: 60px 0;
@@ -24,14 +25,18 @@ const Image = styled.img`
   width :60%;
   border-radius: 10px;
   z-index: 0;
+  @media (max-width: 480px) {
+   width: 100%; 
+  }
   /* position: absolute; */
 `
-const ImageContainer = styled.div`
+const ImageContainer = styled(Link)`
   position: relative;
-  /* height: 100%; */
   z-index: 0;
-
-`;
+  @media (max-width: 480px) {
+    width: 100%;
+    min-height: 290px;
+  }`;
 const ImageText = styled.span`
   position: absolute;
   color: white;
@@ -43,7 +48,9 @@ const ImageText = styled.span`
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
-`
+  @media (max-width: 480px) {
+   width: 100%; 
+  }`
 interface IIndexProps {
 }
 
@@ -52,9 +59,9 @@ const Index: React.FunctionComponent<IIndexProps> = (props) => {
     <Container>
       <Title>My Airbnb</Title>
       <Section>
-        <ImageContainer>
+        <ImageContainer to='/directory'>
         <Image src={'https://images.unsplash.com/photo-1648474814989-5f5be1d39aa3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1399&q=80'} />
-        <ImageText>Find your next getaway</ImageText>
+        <ImageText>Find the right stay</ImageText>
         </ImageContainer>
       </Section>
 

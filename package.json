@@ -33,6 +33,7 @@
     "react-redux": "^7.2.7",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.0",
+    "react-toastify": "^8.2.0",
     "react-tooltip": "^4.2.21",
     "redux-thunk": "^2.4.1",
     "sift": "^16.0.0",

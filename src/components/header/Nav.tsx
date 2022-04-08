@@ -109,14 +109,14 @@ const handleLogout = ( ) => {
 const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const {logUser} = bindActionCreators(userActions, dispatch);
+  // const {logUser} = bindActionCreators(userActions, dispatch);
 
-  const handleClose = () => {
-    setIsOpen(false)
-    console.log(isOpen)
-  }
+  // const handleClose = () => {
+  //   setIsOpen(false)
+  //   console.log(isOpen)
+  // }
 
 
 
@@ -133,20 +133,20 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
 
       {currentUser.authenticated ?
         <>
-        <Button  to='/directory'>View Houses</Button>
-          <Button  to='/account/favorites'>View Favorites</Button>
-          <Button to={`/account`}>My Account</Button>
+        <Button onClick={()=>setIsOpen(false)} to='/directory'>View Houses</Button>
+          <Button onClick={()=>setIsOpen(false)}   to='/account/favorites'>View Favorites</Button>
+          <Button onClick={()=>setIsOpen(false)}  to={`/account`}>My Account</Button>
           <Button onClick={() => {
             handleLogout()
-            handleClose()
+            setIsOpen(false)
           }
           } to='/'>Log Out</Button>
         </>
         :
         <>
-          <Button  to='/login'>Log In</Button>
-          <Button to='/directory'>View Houses</Button>
-          <Button  to='/register'>Register</Button>
+          <Button  to='/login' onClick={()=>setIsOpen(false)} >Log In</Button>
+          <Button to='/directory' onClick={()=>setIsOpen(false)} >View Houses</Button>
+          <Button  to='/register' onClick={()=>setIsOpen(false)} >Register</Button>
         </>
       }
       </Container>

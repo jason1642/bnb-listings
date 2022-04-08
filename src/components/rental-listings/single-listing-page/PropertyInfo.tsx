@@ -6,7 +6,9 @@ import IntroSection from './intro-section/IntroSection.tsx';
 import SecondSection from './second-section/SecondSection.tsx';
 import ReviewSection from './review-section/ReviewSection.tsx';
 import { addFavorite } from '../../../services/api-helpers.ts';
-
+import { BsHeartFill, BsHeart } from 'react-icons/bs';
+import Swal  from'sweetalert2'
+import { set } from 'mongoose-int32';
 const Container = styled.div`
   padding-top: 40px;
   display: flex;
@@ -16,9 +18,27 @@ const Container = styled.div`
 `;
 
 const FavoriteButton = styled.button`
-  color: red;
-
+  color: black;
+  /* border-radius: 13px; */
+  border-width: 0px;
+  background-color: transparent;
+  /* padding: 4px 10px; */
+  width: 180px;
+  
 `
+const Wrapper = styled.div`
+   color: black;
+  border-radius: 13px;
+  border-width: 0px;
+  margin-left: 180px;
+  align-self: flex-start;
+  background-color: #7dfb61;
+  padding: 4px 10px;
+  &:hover{
+    cursor: pointer;
+    background-color: #99fb61a5;
+  }
+`;
 
 // typescript method returns object
 
@@ -37,8 +57,8 @@ const SingleListingPage = ({currentUser}) => {
   const { _id } = useParams();
   const newOptions: {
   } = new Options(_id)
-  const [listingData, setListingData] = useState();
-
+  const [listingData, setListingData] = useState<any>();
+  const [isFavorited, setIsFavorited] = useState<Boolean>(false);
   useEffect(() => {
     console.log(_id)
     console.log(currentUser)
@@ -49,10 +69,51 @@ const SingleListingPage = ({currentUser}) => {
     }, err=> console.log(err))
 
   }, [currentUser])
-  const handleAddFavorite = async() => {
-    await addFavorite(currentUser._id, _id).then(res => {
+
+
+  useEffect(() => {
+    const isInFavorites = listingData ? currentUser.favorites.find((ele: string) => ele === listingData._id) : -1
+    console.log(isInFavorites)
+    isInFavorites !== -1 && setIsFavorited(true);
+    console.log(listingData)
+  }, [currentUser, listingData]);
+
+
+  type HandleFavType = () => any
+
+  const handleAddFavorite: HandleFavType = async() => {
+    await addFavorite(currentUser._id, _id).then((res: string) => {
       console.log(res)
-    }, err=>console.log(err))
+      let timerInterval;
+      res === 'added' ? setIsFavorited(false) : setIsFavorited(true);
+              return res === 'added'?  Swal.fire({
+                title: 'Added to favorites!',
+                icon: 'success',
+            timer: 1000,
+            didOpen: () => {
+              Swal.showLoading()
+              const b: any = Swal.getHtmlContainer().querySelector('b')
+              timerInterval = setInterval(() => {
+              b.textContent = Swal.getTimerLeft()
+            }, 100)},
+            willClose: () => {clearInterval(timerInterval)}
+              })
+                :
+                Swal.fire({
+                  title: 'Removed from favorites!',
+                  icon: 'error',
+                  timer: 1000,
+                  didOpen: () => {
+                 
+                  },
+                  willClose: () => {
+                    clearInterval(timerInterval)
+                  }
+                    })
+                
+            }, err => {
+              console.log(err)
+            })
   }
   // introsection has two sides/components
   return (<Container>
@@ -60,9 +121,13 @@ const SingleListingPage = ({currentUser}) => {
       <IntroSection
         data={listingData} />
     
-      <FavoriteButton
-        onClick={handleAddFavorite}
-      >Add to favorites</FavoriteButton>
+      {currentUser.authenticated &&
+        <Wrapper>{isFavorited ? <BsHeart style={{ color: 'red' }} /> : <BsHeartFill style={{ color: 'red' }} /> }
+          
+        <FavoriteButton onClick={handleAddFavorite}>
+            {isFavorited ? 'Remove from' : 'Add to'} favorites
+          </FavoriteButton></Wrapper>
+      }
     <SecondSection data={listingData} />
 
     <ReviewSection data={listingData} /></>}

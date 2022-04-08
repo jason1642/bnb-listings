@@ -9,10 +9,14 @@ const Container = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `;
 const Image = styled.img`
 width: 75%;
 border-radius: 15px;
+@media (max-width: 480px) {
+   width: 100%; 
+  }
 `
 const Text = styled.div`
   position: absolute;

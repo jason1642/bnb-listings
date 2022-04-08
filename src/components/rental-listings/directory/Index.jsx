@@ -41,14 +41,14 @@ const Index = () => {
   const handleFilter = data => {
     setListings(data)
   }
-  useEffect(() => {
-    console.log(listings)
-  }, [listings])
+
+   
 
   return (<Container>
     <Header>
       <Title>Search </Title>
       <Filter
+        listingsLength={ listings && listings.length}
     handleFilter={handleFilter}  />
     </Header>
     
@@ -57,11 +57,12 @@ const Index = () => {
 
     
     {
-      listings && listings.length > 0 && listings.map((data, i) => 
+      listings ? listings.length > 0 && listings.map((data, i) => 
         <Card
           key={i}
-          data={data} />
-      )
+          data={data} /> 
+        ) : 
+          <>No listings found</>
     }
   </CardContainer>
   </Container> );

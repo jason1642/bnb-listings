@@ -12,21 +12,25 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #807770;
+  @media (max-width: 480px) {
+    
+  }
 `;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100%; */
   width: 70%;
   border-width: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #A38974
-;
-  /* border: 1px solid black; */
+  background-color: #A38974;
   padding: 50px 20px 80px 20px;
   border-radius: 10px;
+  @media (max-width: 480px) {
+    width: 95%;
+
+  }
 `
 
 const TextInput = styled.input`
@@ -36,8 +40,10 @@ const TextInput = styled.input`
   border-radius: 10px;
   border-width: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
   font-size: 18px;
+  @media (max-width: 480px) {
+   width: 100%; 
+  }
 `
 const SubmitButton = styled.input`
   font-size: 22px;
@@ -50,6 +56,9 @@ const SubmitButton = styled.input`
   margin: 10px;
   &:hover{
     cursor: pointer;
+  }
+  @media (max-width: 480px) {
+    width: 155px;
   }
 `
 const Title = styled.div`
