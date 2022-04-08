@@ -128,7 +128,7 @@ const Filter = ({handleFilter, listingsLength}) => {
         if (oppositeBool === true) {
           // setPropertyTypeArray(prev => [...prev, optionValue]);
    
-          axios.get('https://listings-airbnb.herokuapp.com/api/airbnb/listings/query', {
+          axios.get('https://airbnb-home-listings.herokuapp.com/api/airbnb/listings/query', {
             params: 
               // mongoose can query array to find different values of same property
               // all values should be Objects to be queried one at a time and added to state array and taken out on toggle
@@ -156,7 +156,7 @@ const Filter = ({handleFilter, listingsLength}) => {
   }   
   
   useEffect(() => {
-    axios.get('https://listings-airbnb.herokuapp.com/api/airbnb/listings/query',
+    axios.get('https://airbnb-home-listings.herokuapp.com/api/airbnb/listings/query',
     { params: { 'address.country': 'United States' } }).then((res) => {
       setSearchResults(res.data)
       // console.log(res)

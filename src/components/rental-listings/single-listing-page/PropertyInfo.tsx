@@ -52,7 +52,7 @@ class Options {
   constructor(_id: string) {
     this._id = _id;
     this.method = 'get';
-    this.baseURL = 'https://listings-airbnb.herokuapp.com/api/airbnb/listings/rooms/' + this._id;
+    this.baseURL = 'https://airbnb-home-listings.herokuapp.com/api/airbnb/listings/rooms/' + this._id;
   }
 }
 
