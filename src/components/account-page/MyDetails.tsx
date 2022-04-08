@@ -24,6 +24,12 @@ const Main = styled.div`
   width: 100%;
   text-align: left;
   height: 80%;
+  @media (max-width: 480px){
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto;
+  }
 
 `;
 const Span = styled.div`
@@ -44,6 +50,9 @@ const SideOne = styled.div`
   /* background-color: #aaaaff; */
   font-size: 15px;
   font-weight: 300;
+  @media (max-width: 480px){
+    width: 95%;
+  }
 `;
 const SideTwo = styled.div`
   /* background-color: #a1f4a1; */

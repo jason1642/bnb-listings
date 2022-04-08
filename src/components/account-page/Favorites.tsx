@@ -22,11 +22,17 @@ const Title = styled.div`
   font-weight: 300;
   /* background-color: green; */
   font-size: 30px;
+  @media (max-width: 480px){
+    margin: 10px 0;
+  }
 `;
 const CardWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: 480px){
+    justify-content: center;
+  }
 `
 // Create api to fetch array full of data rather than references
 // declare function useOutletContext<

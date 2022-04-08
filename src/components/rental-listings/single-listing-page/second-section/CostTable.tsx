@@ -30,6 +30,9 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   /* border: 1px solid black; */
   height: 100%;
   justify-content: space-between;
+  @media (max-width: 480px){
+    width: 100%;
+  }
 `;
 const Title = styled.div`
   /* border: 1px solid black; */
@@ -70,10 +73,18 @@ const Button = styled.button`
   border-radius: 6px;
   font-weight: 700;
   font-size: 15px;
+  padding:0px 9px;
   background-color: orange;
+  @media (max-width: 480px){
+    padding:4px 9px;
+    height: auto;
+  }
 `
 const Span = styled.div`
   margin: 0 5px;
+  @media (max-width: 480px){
+    font-size: 20px;
+  }
 `
 const Wrapper = styled.div`
   display: flex;

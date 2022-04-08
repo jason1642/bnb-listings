@@ -23,7 +23,7 @@ import {
   BsLaptop,
   BsMicFill,
   BsHeart,
-  BsHandThumbsUp
+  // BsHandThumbsUp
 } from 'react-icons/bs';
 const amenitiesCollection = [
   {name: 'Security cameras on property', icon: <BsFillCameraVideoFill />},
@@ -73,7 +73,9 @@ const Container = styled.div`
   margin-left: 9px;
   display: flex;
   flex-wrap: wrap;
-
+  @media (max-width: 480px){
+    width: 95%;
+  }
 `;
 const Title = styled.div`
   width: 100%;
@@ -85,8 +87,13 @@ const Title = styled.div`
   font-weight: 300;
   font-size: 26px;
 `;
-const List = styled.div`
-  border: 1px solid black;
+const ItemContainer = styled.div`
+  /* border: 1px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+  @media (max-width: 480px){
+    padding-bottom: 14px;
+  }
 `;
 const Item = styled.div`
   display: flex;
@@ -94,32 +101,35 @@ const Item = styled.div`
   align-items:center;
   padding: 6px;
   margin: 5px;
+  width: auto;
   /* border: 1px solid black; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   & * {
     margin-right: 5px;
   }
+  @media (max-width: 480px){
+    width: auto;
+  }
 `;
-// export interface IAmenitiesProps {
-// }
+
 
 export function Amenities ({data}) {
   return (
     <Container><Title>
         What this place has to offer
-      </Title>
+      </Title><ItemContainer>
       {data.amenities.length > 1 ? 
-      <>
-      {
+      
+      
         data && data.amenities.map(ele => 
           ele !== 'translation missing: en.hosting_amenity_50' &&  <Item>
             {data && renderIcon(ele) }{ele}
           </Item>
         )
-      }</>
+      
         : <Item style={{alignSelf:'center', margin: '0 auto', boxShadow: 'none'}}>No amenities lists</Item>
-    }
+    }</ItemContainer>
     </Container>
   );
 }

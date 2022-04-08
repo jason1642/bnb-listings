@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import { getAllFavorites } from '../../services/api-helpers.ts'
 import {BsHeart, BsPerson
 } from 'react-icons/bs';
+import Nav from './Nav.tsx'
 interface IAccountPageProps {
 }
 
@@ -21,6 +22,10 @@ const Container = styled.div`
   /* align-self: center; */
   width: 85%;
   /* background-color: grey; */
+  @media (max-width: 480px){
+    padding-top: 80px;
+    width: 100%;
+  }
   `
 const Title = styled.div`
   
@@ -46,26 +51,18 @@ const AccountPage: React.FunctionComponent<IAccountPageProps> = (props) => {
     gap: 5px;
     align-items: center;
   `;
-  const SideMenu = styled.div`
-    display: flex;
-    width: 200px;
-    height: 70vh;
-    padding: 10px;
-    /* border: 1px solid black; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-    /* height: 100%; */
-    flex-direction: column;
-    text-align: left;
-  `;
   const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     width: 90%;
     justify-content: center;
     margin-top: 20px;
-
     gap: 10px;
+    @media (max-width: 480px){
+    width: 95%;
+    flex-direction: column;
+  }
   `;
   // url is account/:id
   useEffect(() => {
@@ -85,10 +82,7 @@ const AccountPage: React.FunctionComponent<IAccountPageProps> = (props) => {
       {currentUser ? <>
         {/* <Title>Your Account</Title> */}
         <Wrapper>
-        <SideMenu>
-          <Item to='/account'><BsPerson />Account Details</Item>
-          <Item to='/account/favorites'><BsHeart />Favorites</Item>
-</SideMenu>
+        <Nav />
         <Main>
           
           {/* mydetails and favorites components on path /account/details /account/favorites */}

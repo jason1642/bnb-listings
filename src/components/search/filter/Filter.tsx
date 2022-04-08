@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import qs from 'qs';
-import e from 'express';
+// import e from 'express';
 // import _ from 'lodash';
 const Container = styled.div`
   display: flex;
@@ -11,9 +11,7 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Button = styled.input`
 
-`
 const SearchBanner = styled.div`
   padding: 15px 20px;
   font-size: 20px;
@@ -22,10 +20,14 @@ const SearchBanner = styled.div`
 
 const Group = styled.div`
   display: flex;
+  @media (max-width: 480px){
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-evenly;
+  }
 `;
-const myParams = {
 
-}
 const Form = styled.form`
   display: flex;
   flex-direction: row;
@@ -49,6 +51,9 @@ const Label = styled.label`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   &:hover{
     cursor: pointer;
+  }
+  @media (max-width: 480px){
+    padding: 8px;
   }
 `
 

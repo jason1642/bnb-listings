@@ -4,11 +4,6 @@ import styled from 'styled-components';
 import { format } from 'fecha';
 import { parse } from 'fecha';
 
-
-
-
-
-
 const styles = {
   reviewerPhoto: {
     height: '60px',
@@ -24,19 +19,31 @@ const Container = styled.div`
   width:40% ;
   margin: 10px 0;
   /* padding: 6px; */
-  height: 220px;
-  overflow-y: scroll;
+  /* height: 220px; */
+  /* overflow-y: scroll; */
+  min-height:240px ;
   text-align: left;
   border-radius: 15px;
+  @media (max-width: 480px){
+    width: 95%;
+    min-height:160px ;
+    height: auto;
+  }
 `;
 const Name = styled.div`
   font-size: 20px;
 `;
 
 const Body = styled.div`
+  display: flex;
+
   padding: 8px;
   font-size: 13px;
   line-height: 22px;
+  @media (max-width: 480px){
+    overflow: scroll;
+    height: 70%;
+  }
 `;
 const Header = styled.div`
   display: flex;
@@ -45,6 +52,9 @@ const Header = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  @media (max-width: 480px){
+    /* height: 25%; */
+  }
 `;
 const DateCreated = styled.div`
   /* padding: 5px 10px; */
@@ -74,7 +84,7 @@ export function SingleReview({ data }) {
       <DateCreated>
         {
           
-          format(new Date(parse(date, 'isoDateTime')), 'MMM:YYYY')}
+          format(new Date(parse(date, 'isoDateTime')), 'MMM: YYYY')}
       </DateCreated>
       </TextContainer>
     </Header>

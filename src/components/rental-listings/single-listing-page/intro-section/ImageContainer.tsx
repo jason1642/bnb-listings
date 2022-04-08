@@ -24,6 +24,9 @@ const Container = styled.div`
     padding-bottom: 100%;
     content: "";
   }
+  @media (max-width: 480px){
+    width: 95%;
+  }
 `
 
 const Image = styled.img`

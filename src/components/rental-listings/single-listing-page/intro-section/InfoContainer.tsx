@@ -42,9 +42,16 @@ const Container = styled.div`
   /* border: 1px solid black; */
   height: 100%;
   border-radius: 14px;
+  @media (max-width: 480px){
+    width: 100%;
+  }
+  @media (max-width: 480px){
+    justify-content: center;
+    align-items: center;
+  }
   /* background-color: orange; */
 `
-const Title = styled.div`
+const Title = styled.h2`
   display: flex;
   font-size: 26px;
   font-weight: 300;
@@ -52,6 +59,12 @@ const Title = styled.div`
   padding-left: 25px;
   /* border-radius: 14px */
   width: 90%;
+  @media (max-width: 480px){
+    /* text-align: right; */
+    width: auto;
+    /* padding: 15px; */
+    margin: 0 auto;
+  }
   /* background-color: #3d3d3d; */
 `;
 
@@ -73,8 +86,11 @@ const Item = styled.div`
     flex-direction: row;
 `
 const Header = styled.div`
-  
-
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `
 const Main = styled.div`
   flex-grow: 1;
@@ -100,6 +116,10 @@ const Description = styled.div`
   line-height: 20px;
   padding: 15px 12px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  @media (max-width: 480px){
+    box-shadow: none;
+    font-size: 16px;
+  }
 `
 const Button = styled.button`
   text-decoration: underline;
@@ -122,7 +142,9 @@ const RowTwo = styled.div`
   border-radius: 2px;
   justify-content: space-around;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167);
-
+  @media (max-width: 480px){
+    box-shadow: none;
+  }
 
 `;
 const SpanItem = styled.div`

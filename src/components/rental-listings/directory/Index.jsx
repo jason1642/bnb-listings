@@ -14,6 +14,10 @@ const Container = styled.div`
   min-height: 100vh;
   flex-direction: column;
   padding-top: 40px;
+  @media (max-width: 480px){
+    width: 100%;
+    padding-top: 90px;
+  }
   /* border: 1px solid black; */
   `;
 const Header = styled.div`
@@ -22,6 +26,10 @@ const Header = styled.div`
 const Title = styled.div`
   font-size: 35px;
   font-weight: 300;
+  margin: 38px 0 10px 0;
+  @media (max-width: 480px){
+    display: none;
+  }
 `
 const CardContainer = styled.div`
   display: flex;

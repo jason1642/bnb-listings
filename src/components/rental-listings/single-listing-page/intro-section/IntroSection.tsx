@@ -10,7 +10,13 @@ const Container = styled.div`
   min-height: 70vh;
   display: flex;
   padding-top: 20px;
- 
+
+  @media (max-width: 480px){
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+  }
 `;
 
 

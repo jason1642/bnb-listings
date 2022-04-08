@@ -15,6 +15,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  &  * {
+    /* width: 100%; */
+  }
 `;
 
 const FavoriteButton = styled.button`
@@ -72,7 +75,8 @@ const SingleListingPage = ({currentUser}) => {
 
 
   useEffect(() => {
-    const isInFavorites = listingData ? currentUser.favorites.find((ele: string) => ele === listingData._id) : -1
+    console.log(currentUser)
+    const isInFavorites = (listingData && currentUser.authenticated === true) ? currentUser.favorites.find((ele: string) => ele === listingData._id) : -1
     console.log(isInFavorites)
     isInFavorites !== -1 && setIsFavorited(true);
     console.log(listingData)
