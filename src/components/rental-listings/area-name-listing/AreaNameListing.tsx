@@ -44,7 +44,7 @@ const AreaNameListing: React.FunctionComponent<IAreaNameListingProps> = (props) 
     let capName: string = name.split(' ').map(str=>_.capitalize(str)).join(' ')
 
     
-    axios.get('http://localhost:5040/api/airbnb/listings/areas/' + capName
+    axios.get('https://listings-airbnb.herokuapp.com/api/airbnb/listings/areas/' + capName
     ).then((res) => {
       setAreaListings(res.data)
     }, err => console.log(err))
