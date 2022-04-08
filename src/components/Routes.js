@@ -8,7 +8,7 @@ import Directory from './rental-listings/directory/Index.jsx'
 import PropertyInfo from './rental-listings/single-listing-page/PropertyInfo.tsx'
 import AccountPage from './account-page/AccountPage.tsx';
 import MyDetails from './account-page/MyDetails.tsx';
-import Favorites from './account-page/Favorites.tsx';
+import Favorites from './account-page/Favorites';
 import AreaNameListing from './rental-listings/area-name-listing/AreaNameListing.tsx';
 const SiteRoutes = () => {
   

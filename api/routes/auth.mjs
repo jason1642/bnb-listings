@@ -46,7 +46,7 @@ authRouter.post('/', async (req, res) => {
   // If verified, return a jwt, and user id & username
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
   console.log('this is token' + token)
-  res.header('x-auth-token', token).send( _.assign({token: token},  _.pick(user, ['_id', 'email', 'username', 'created_at', 'updated_at', 'favorites']) ));
+  res.header({'x-auth-token': token, 'authorization': `Bearer ${token}`}).send( _.assign({token: token},  _.pick(user, ['_id', 'email', 'username', 'created_at', 'updated_at', 'favorites']) ));
   // console.log(req.headers)
 });
 

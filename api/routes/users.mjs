@@ -3,6 +3,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import _ from 'lodash';
 import config from 'config';
+import Joi from 'joi';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
@@ -127,7 +128,33 @@ userRouter.post('/get-all-favorites-data', async (req, res, next) => {
 })
 
 
+const passwordSchema = Joi.object({
+  password: Joi.string().min(5).max(255).trim().required()
+})
+// req = token, user data
+// Verified that user is authenticated
+// Middleware sends user instance
+// Check schema of new password before implementation
+// Check if the input password is the same as the original
+// 
+userRouter.put('/change-password',
+    verifyUser,
+  async (req, res, next) => {
 
+    console.log(req.headers)
+    const { error } = passwordSchema.validate({password: req.body.new_password});
+    if (error) {
+      console.log(error)
+      return res.status(400).send(error.details[0].message);
+    }
+    const validPassword = await bcrypt.compare(req.body.old_password, req.user.password);
+    if (!validPassword) return res.status(400).send('Incorrect email or password.');
+    const salt = await bcrypt.genSalt(10);
+    req.user.password = await bcrypt.hash(req.body.new_password, salt);
+    
+    await req.user.save();
+    return res.send("Password changed")
+})
 
 
 

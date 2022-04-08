@@ -62,7 +62,7 @@ const Index = (props) => {
 
     <Logo src={siteLogo}/>
     </LogoContainer>
-    <LoggedIn>{currentUser.authenticated ? 'Welcome,' + currentUser.username : 'You are not logged in'}
+    <LoggedIn>{currentUser.authenticated ? 'Welcome, ' + currentUser.username : 'You are not logged in'}
     </LoggedIn>
           
     <div style={{

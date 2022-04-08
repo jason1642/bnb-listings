@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { useOutletContext } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import ChangePassword from './ChangePassword.tsx';
 
 interface IMyDetailsProps {
 }
@@ -11,7 +13,7 @@ const Container = styled.div`
   /* border: 1px solid black; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  min-height: 70vh;
+  min-height: 86vh;
   padding: 15px;
   width: 100%;
 `;
@@ -32,18 +34,15 @@ const Main = styled.div`
   }
 
 `;
-const Span = styled.div`
-  
-`;
-declare interface UserObject {
+// declare interface UserObject {
 
-    username: string,
-    _id: string,
-    email: string,
-    favorites: [string],
-    authenticated: Boolean
+//     username: string,
+//     _id: string,
+//     email: string,
+//     favorites: [string],
+//     authenticated: Boolean
   
-}
+// }
 const SideOne = styled.div`
   width: 40%;
   padding: 15px;
@@ -69,9 +68,9 @@ const Item = styled.div`
   font-size: 17px;
   margin: 5px 0;
 `;
-const Button = styled(Link)`
+const Button = styled.button`
   /* display: flex; */
-  
+  border-width: 0px;
   width: auto;
   color: black;
   /* margin-top: 55px; */
@@ -88,9 +87,14 @@ const Info = styled.div`
   font-size: 12px;
 `;
 const MyDetails: React.FunctionComponent<IMyDetailsProps> = () => {
-  const [ favoritesListData, currentUser] = useOutletContext();
-  console.log(currentUser)
+  const [favoritesListData, currentUser] = useOutletContext();
+  const [toggleChange, setToggleChange] = useState<Boolean>(false)
+  // console.log(currentUser)
   // User has # of favorites, date created, username change, password change, email change
+  const handleClose = () => {
+    setToggleChange(false)
+    console.log('closing')
+  }
   return (
     <Container>
       <Title>Account Details</Title>
@@ -108,7 +112,25 @@ const MyDetails: React.FunctionComponent<IMyDetailsProps> = () => {
           <Item><b>Username: </b>{currentUser.username}</Item>
           <Item><b>Email: </b>{currentUser.email}</Item>
           <Item><b>Joined: </b>{moment(currentUser.created_at).format('MMMM Do YYYY, h:mm:ss a')}</Item> 
-          <div style={{marginTop:'20px'}}><Button to={'/account/change-password'}>Change Password</Button></div>
+
+
+
+          <div style={{ marginTop: '20px' }}>
+            <Button
+              style={{
+                display: toggleChange ? 'none' : 'flex'
+              }}
+              onClick={()=>setToggleChange(true)}
+              >Change Password</Button></div>
+          <ChangePassword
+            styles={{
+              display: toggleChange ? 'flex' : 'none'
+            }}
+            toggleChange={toggleChange}
+            handleClose={handleClose}
+          />
+       
+       
         </SideTwo>
       </Main>
     </Container>

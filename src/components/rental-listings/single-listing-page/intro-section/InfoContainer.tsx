@@ -138,10 +138,12 @@ const Price = styled.div`
 `
 const RowTwo = styled.div`
   display: flex;
-  padding: 3px 0;
+  padding: 3px 10px;
   border-radius: 2px;
   justify-content: space-around;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167);
+  align-self: flex-start;
+  gap: 6px;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167); */
   @media (max-width: 480px){
     box-shadow: none;
   }

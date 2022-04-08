@@ -8,22 +8,26 @@ const styles = {
   reviewerPhoto: {
     height: '60px',
     width: '50px',
-    marginRight: '7px'
+    marginRight: '7px',
+    color: '#4d80e7'
   }
 }
 
 const Container = styled.div`
   /* border: 1px solid black; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.135), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+  display: flex;
+  flex-direction: column;
   width:40% ;
   margin: 10px 0;
+  margin-right: auto;
   /* padding: 6px; */
   /* height: 220px; */
   /* overflow-y: scroll; */
   min-height:240px ;
   text-align: left;
   border-radius: 15px;
+  max-height: 300px;
   @media (max-width: 480px){
     width: 95%;
     min-height:160px ;
@@ -37,9 +41,11 @@ const Name = styled.div`
 const Body = styled.div`
   display: flex;
 
-  padding: 8px;
+  padding: 10px;
   font-size: 13px;
   line-height: 22px;
+  overflow-y: scroll;
+
   @media (max-width: 480px){
     overflow: scroll;
     height: 70%;
@@ -48,7 +54,7 @@ const Body = styled.div`
 const Header = styled.div`
   display: flex;
   padding-left: 5px;
-  /* background-color: grey; */
+  /* background-color: #4d80e7; */
   display: flex;
   justify-content: flex-start;
   align-items: center;

@@ -4,11 +4,7 @@ import Card from '../rental-listings/directory/Card'
 import { useOutletContext } from "react-router-dom";
 
 
-
-interface IFavoritesProps {
-
-}
-interface AnyObject { [key: string]: any };
+// interface AnyObject { [key: string]: any };
 
 const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -38,9 +34,9 @@ const CardWrapper = styled.div`
 // declare function useOutletContext<
 //   Context = any
 // >(): Context;
-const Favorites: React.FunctionComponent<IFavoritesProps> = () => {
+const Favorites = () => {
   
-  const [favoritesListData, currentUser] = useOutletContext()
+  const [favoritesListData] = useOutletContext()
   console.log(favoritesListData)
    return (
     <Container>

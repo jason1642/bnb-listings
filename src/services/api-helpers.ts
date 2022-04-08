@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import _ from 'lodash';
 const baseUrl = process.env.Node_ENV === 'production' ? 'https://circle-chat1.herokuapp.com' : 'http://localhost:5040';
 
 
@@ -67,7 +67,17 @@ export const getAllFavorites = async (user_id: string) =>
 
 
 
-
+export const handleChangePassword = async (input) => {
+  const token = localStorage.getItem("authToken");
+  return await api.put('/api/user/change-password', _.assign(input, { token: token }))
+    .then((res) => {
+      console.log(res)
+      return true
+    }, err => {
+      console.log(err)
+      return false
+    })
+}
 
 
 

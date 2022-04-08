@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import Filter from '../../search/filter/Filter.tsx';
 import Card from './Card'
 
@@ -26,7 +25,7 @@ const Header = styled.div`
 const Title = styled.div`
   font-size: 35px;
   font-weight: 300;
-  margin: 38px 0 10px 0;
+  margin: 8px 0 10px 0;
   @media (max-width: 480px){
     display: none;
   }

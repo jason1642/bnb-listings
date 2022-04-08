@@ -2,7 +2,7 @@ import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {actionCreators, userActions } from './redux/index'
-import { useEffect, useState, useLayoutEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SiteRoutes from './components/Routes'
 import Header from './components/header/Header.jsx';
 

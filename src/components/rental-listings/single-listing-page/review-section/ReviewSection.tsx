@@ -40,6 +40,8 @@ const ReviewContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 20px;
 `;
 const Item = styled.div`
   padding: 5px;
