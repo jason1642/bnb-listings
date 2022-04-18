@@ -32,7 +32,7 @@ export const verifyUser = () => {
 // };
 return (dispatch: any) => {
   const token = localStorage.getItem('authToken')
-  
+    console.log(token)
 
     return api.post('/api/user/auth/verify',
       {

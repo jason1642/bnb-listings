@@ -14,10 +14,6 @@ const loginSchema = Joi.object({
   password: Joi.string().min(5).max(255).trim().required()
 })
 
-
-
-
-
 authRouter.post('/', async (req, res) => {
   // First use mongoose schema with Joi validator to see if username and
   // password are valid input, not valid matching password
@@ -26,14 +22,10 @@ authRouter.post('/', async (req, res) => {
     console.log(error)
     return res.status(400).send(error.details[0].message);
   };
- 
   //  Now find the user by their username
   let user = await User.findOne({ username: req.body.username });
-
-  if (!user) {
-    
-
-      return res.status(400).send('Incorrect username or password.');
+  if (!user) {  
+    return res.status(400).send('Incorrect username or password.');
   }
 // console.log(user)
   // Then validate the Credentials in MongoDB match those provided in the request.
@@ -50,28 +42,18 @@ authRouter.post('/', async (req, res) => {
   // console.log(req.headers)
 });
 
-
- 
-
-
 authRouter.post('/verify', async (req, res, next) => {
   console.log(req.body)
   // const authHeader = req.headers['authorization'];
   // const token = authHeader && authHeader.split(' ')[1];
-  // if (token == null) return res.status(403).send('no token found');
-  
+  // if (token == null) return res.status(403).send('no token found'); 
   jwt.verify(req.body.token, process.env.TOKEN_SECRET,
     async (err, user) => {
       console.log(user)
       if (err) return res.status(403).send('invalid token')
-
-
-      return await User.findOne({ _id: user._id }).then(userRes=>res.send(userRes))
-      
+      return await User.findOne({ _id: user._id }).then(userRes=>res.send(userRes))    
     }  
   );
-  
 })
-
 
 export default authRouter;
