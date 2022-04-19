@@ -1,6 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
-const baseUrl = process.env.Node_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5040';
+const baseUrl = process.env.Node_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
 
 
 // Create a new instance of axios with a custom config
@@ -80,6 +80,8 @@ export const handleChangePassword = async (input) => {
 }
 
 
+export const getAreaByName = async (name:string) => 
+  await api.get(`/api/airbnb/listings/areas/${name}`).then(res=>res.data).catch(err=>err)
 
 
 

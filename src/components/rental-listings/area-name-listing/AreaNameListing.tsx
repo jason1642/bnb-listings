@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 import Card from '../directory/Card'
-
+import {getAreaByName} from '../../../services/api-helpers.ts'
 interface IAreaNameListingProps {
 }
 
@@ -44,11 +44,10 @@ const AreaNameListing: React.FunctionComponent<IAreaNameListingProps> = (props) 
     let capName: string = name.split(' ').map(str=>_.capitalize(str)).join(' ')
  
     
-    axios.get('https://reactbnb-listings.herokuapp.com/api/airbnb/listings/areas/' + capName
-    ).then((res) => {
-      setAreaListings(res.data)
+    getAreaByName(capName).then((res) => {
+      setAreaListings(res)
     }, err => console.log(err))
-    
+    console.log(areaListings)
   }, []);
 
   useEffect(() => {
