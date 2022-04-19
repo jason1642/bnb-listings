@@ -16,7 +16,7 @@ app.use(cors());
 app.use('/api/user', userRouter); 
 app.use('/api/user/auth', authRouter);
 app.use('/api/airbnb/listings', airbnbHomeRouter);
-app.listen(port, () => console.log('listening on port ' + port));
+app.listen(5050, () => console.log('listening on port ' + 5050));
 
  
 
