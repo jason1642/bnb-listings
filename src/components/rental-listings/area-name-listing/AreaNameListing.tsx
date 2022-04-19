@@ -42,7 +42,7 @@ const AreaNameListing: React.FunctionComponent<IAreaNameListingProps> = (props) 
 
     // uppercase first letter of each word
     let capName: string = name.split(' ').map(str=>_.capitalize(str)).join(' ')
-
+ 
     
     axios.get('https://reactbnb-listings.herokuapp.com/api/airbnb/listings/areas/' + capName
     ).then((res) => {
