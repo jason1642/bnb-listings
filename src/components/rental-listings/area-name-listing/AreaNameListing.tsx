@@ -59,7 +59,7 @@ const AreaNameListing: React.FunctionComponent<IAreaNameListingProps> = (props) 
 
 
       <CardContainer>
-        {areaListings.length > 0 && areaListings.map(ele =><Card data={ele} /> )}
+        {areaListings.length > 0 && areaListings.map((ele, i) =><Card key={i} data={ele} /> )}
       </CardContainer>
     </Container>
   );

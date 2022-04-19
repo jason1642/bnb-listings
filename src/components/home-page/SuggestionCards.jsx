@@ -45,7 +45,7 @@ const ButtonLink = styled(Link)`
   padding: 3px 15px;
   margin: 0 auto;
   margin-top: 12px;
-
+  justify-content: center;
   border-width: 0px;
   background-color: #5353e3;
   color: white;
@@ -53,7 +53,7 @@ const ButtonLink = styled(Link)`
   /* justify-self: flex-end; */
   @media (max-width: 480px) {
    width: 70%; 
-   justify-items: center;
+   /* justify-items: center; */
   }
 `
 const CardBody = styled.div`
@@ -90,7 +90,7 @@ const SuggestionCards = () => {
   return (<Container>
     
     {cardsInfo.map((data, i) =>
-      <Card>
+      <Card key={i}>
         <CardImage  variant="top" src={data.image} />
         <CardBody>
           <Title>{data.name}</Title>

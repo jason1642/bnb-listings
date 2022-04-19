@@ -84,7 +84,8 @@ export const getAreaByName = async (name:string) =>
   await api.get(`/api/airbnb/listings/areas/${name}`).then(res=>res.data).catch(err=>err)
 
 
-
+export const getManyByQuery = async (query) => 
+  await api.get('/api/airbnb/listings/query', query).then(res=>res.data).catch(err=>err)
 
 
 

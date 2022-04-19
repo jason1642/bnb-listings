@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import qs from 'qs';
+import { getManyByQuery } from '../../../services/api-helpers.ts';
 // import e from 'express';
 // import _ from 'lodash';
 const Container = styled.div`
@@ -99,9 +100,10 @@ const Filter = ({handleFilter, listingsLength}) => {
   });
 
 
-  const [activeOptions, setActiveOptions] = useState([]);
+  // const [activeOptions, setActiveOptions] = useState([]);
   const handleArrayChange = (val: string, bool: boolean, optionName: string, queryArr?: Array<AnyObject>) => {
     if (bool) {
+      console.log(queryArr)
       setSearchResults(prev => [...prev, ...queryArr].reverse())
     } else {
       const filteredArray = searchResults.filter(ele=> ele.property_type !== val)
@@ -128,7 +130,7 @@ const Filter = ({handleFilter, listingsLength}) => {
         if (oppositeBool === true) {
           // setPropertyTypeArray(prev => [...prev, optionValue]);
    
-          axios.get('https://reactbnb-listings.herokuapp.com/api/airbnb/listings/query', {
+          getManyByQuery({
             params: 
               // mongoose can query array to find different values of same property
               // all values should be Objects to be queried one at a time and added to state array and taken out on toggle
@@ -139,26 +141,26 @@ const Filter = ({handleFilter, listingsLength}) => {
         }
           }).then(res => {
 
-    console.log(res)
-            handleArrayChange(optionValue, true,  e.target.name, res.data,);
-            console.log(searchResults)
+            // console.log(res)
+            
+            handleArrayChange(optionValue, true,  e.target.name, res,);
+            // console.log(searchResults)
            
-            console.log(res, 'filter params');
+            // console.log(res, 'filter params');
       }, err=> console.log(err))
 
         } else if (oppositeBool === false) {
           handleArrayChange(optionValue, false,  e.target.name, null);
-    
-          
         }
       }
     }
   }   
   
   useEffect(() => {
-    axios.get('https://reactbnb-listings.herokuapp.com/api/airbnb/listings/query',
+
+    getManyByQuery(
     { params: { 'address.country': 'United States' } }).then((res) => {
-      setSearchResults(res.data)
+      setSearchResults(res)
       // console.log(res)
     }, err => console.log(err));
 }, [])

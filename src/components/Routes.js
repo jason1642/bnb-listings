@@ -16,7 +16,7 @@ const SiteRoutes = () => {
 
   // console.log(currentUser)
   return useRoutes([
-    { path: '/', element: <HomePage /> },
+    { path: '/', element: <HomePage currentUser={currentUser}/> },
     { path: '/login', element: currentUser.authenticated ? <Navigate to='/' replace /> : <Login /> },
     { path: '/register', element: currentUser.authenticated ? <Navigate to='/' replace /> : <Register /> },
     { path: '/directory', element: <Directory />},

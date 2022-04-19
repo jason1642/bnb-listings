@@ -13,12 +13,12 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case LOG_IN_USER:
       // console.log('The current user is ', action.payload)
-      console.log(action.payload)
+      // console.log(action.payload)
       return _.assign(action.payload,
         { authenticated: true })
     
     case VERIFY_USER:
-        console.log(action.payload)
+        // console.log(action.payload)
       return _.assign(action.payload,
         { authenticated: true })
     

@@ -43,13 +43,13 @@ authRouter.post('/', async (req, res) => {
 });
 
 authRouter.post('/verify', async (req, res, next) => {
-  console.log(req.body)
+  // console.log(req.body)
   // const authHeader = req.headers['authorization'];
   // const token = authHeader && authHeader.split(' ')[1];
   // if (token == null) return res.status(403).send('no token found'); 
   jwt.verify(req.body.token, process.env.TOKEN_SECRET,
     async (err, user) => {
-      console.log(user)
+      // console.log(user)
       if (err) return res.status(403).send('invalid token')
       return await User.findOne({ _id: user._id }).then(userRes=>res.send(userRes))    
     }  

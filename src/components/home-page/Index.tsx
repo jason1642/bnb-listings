@@ -30,6 +30,11 @@ const Image = styled.img`
   }
   /* position: absolute; */
 `
+const Span = styled(Link)`
+  text-decoration: none;
+  color: black;
+
+  `
 const ImageContainer = styled(Link)`
   position: relative;
   z-index: 0;
@@ -52,9 +57,10 @@ const ImageText = styled.span`
    width: 100%; 
   }`
 interface IIndexProps {
+  currentUser: any,
 }
 
-const Index: React.FunctionComponent<IIndexProps> = (props) => {
+const Index: React.FunctionComponent<IIndexProps> = ({currentUser}) => {
   return (
     <Container>
       <Title>My Airbnb</Title>
@@ -70,9 +76,19 @@ const Index: React.FunctionComponent<IIndexProps> = (props) => {
       <Section>
         <SuggestionCards />
       </Section>
+
+
+      {!currentUser.authenticated ?
       <Section>
         <LoginPromo />
-      </Section>
+        </Section>
+        : <Section>
+
+            <Span to='/directory'>Looking for a specific stay? Try using our search feature in the directory!</Span>
+        </Section>
+       
+    }
+      
     </Container>
   )
 };

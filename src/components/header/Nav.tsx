@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import {slide as Menu} from 'react-burger-menu'
 import {removeToken} from '../../services/api-helpers.ts'
-import { bindActionCreators } from 'redux';
-import { userActions } from '../../redux/index';
-import { useDispatch } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import { userActions } from '../../redux/index';
+// import { useDispatch } from 'react-redux';
 
 
 
@@ -80,13 +80,10 @@ interface INavProps {
   }
 }
 const Container = styled(Menu)`
-  /* height: 100%; */
-  /* margin-right: 40px; */
   z-index: 500;
 `;   
 const Button = styled(Link)`
-  /* padding: 10px;
-  height: 30px; */
+
   height: 30px;
   padding: 5px 16px;
   text-decoration: none;
@@ -98,7 +95,6 @@ const Button = styled(Link)`
 `   
 const handleLogout = ( ) => {
   localStorage.clear();
-  // setUser(null)
   removeToken();
   console.log('You are logged out')
   window.location.reload();
@@ -112,18 +108,18 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
   // const dispatch = useDispatch()
 
   // const {logUser} = bindActionCreators(userActions, dispatch);
-
-  // const handleClose = () => {
-  //   setIsOpen(false)
-  //   console.log(isOpen)
-  // }
-
-
-
+  const handleClose = () => {
+    setIsOpen(!isOpen)
+    console.log(isOpen)
+  }
+  
   return (
+    <div onClick={handleClose}>
 
+    
     <Container
       isOpen={isOpen}
+      
       onOpen={()=>setIsOpen(true)}
       right
       styles={styles}   
@@ -144,13 +140,13 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
         </>
         :
         <>
-          <Button  to='/login' onClick={()=>setIsOpen(false)} >Log In</Button>
           <Button to='/directory' onClick={()=>setIsOpen(false)} >View Houses</Button>
           <Button  to='/register' onClick={()=>setIsOpen(false)} >Register</Button>
+          <Button  to='/login' onClick={()=>setIsOpen(false)} >Log In</Button>
         </>
       }
       </Container>
-     
+      </div>
  
   )
 };
