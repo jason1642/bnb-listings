@@ -1,0 +1,1 @@
+web: cd api && node server.mjs

@@ -33,7 +33,7 @@ connectDatabase();
 
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../build/index.html"));
+  app.use(express.static("../build"));
 }
 
 if (!config.get('PrivateKey')) {
