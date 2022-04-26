@@ -70,7 +70,7 @@ const ReviewSection = ({ data }) => {
   },[])
   return (
     <Container>
-      {review_scores&& review_scores.review_scores_rating !== undefined ? <>
+      {review_scores && review_scores.review_scores_rating !== undefined ? <>
       <Title><BsFillStarFill style={{marginRight:'4px'}} /> {review_scores.review_scores_rating} | {reviews.length} Reviews</Title>
       <StatsTable>
 
@@ -89,7 +89,7 @@ const ReviewSection = ({ data }) => {
  
       </StatsTable>
 <ReviewContainer>
-        {reviews.map((e, i) => 
+        {reviews && reviews.map((e, i) => 
             <SingleReview
               key={i}
               data={e}

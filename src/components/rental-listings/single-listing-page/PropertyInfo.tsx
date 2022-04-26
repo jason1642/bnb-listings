@@ -8,7 +8,8 @@ import ReviewSection from './review-section/ReviewSection.tsx';
 import { addFavorite } from '../../../services/api-helpers.ts';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import Swal  from'sweetalert2'
-import { set } from 'mongoose-int32';
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
+
 const Container = styled.div`
   padding-top: 40px;
   display: flex;
@@ -52,7 +53,7 @@ class Options {
   constructor(_id: string) {
     this._id = _id;
     this.method = 'get';
-    this.baseURL = 'https://reactbnb-listings.herokuapp.com/api/airbnb/listings/rooms/' + this._id;
+    this.baseURL = baseUrl + '/api/airbnb/listings/rooms/' + this._id;
   }
 }
 

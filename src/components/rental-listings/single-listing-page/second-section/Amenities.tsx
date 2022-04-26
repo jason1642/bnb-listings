@@ -54,8 +54,6 @@ const amenitiesCollection = [
   { name: 'Family/kid friendly', icon: <BsHeart /> },
   { name: 'Smoking allowed', icon: <BsHouseDoor /> },
   { name: 'Elevator', icon: <BsHouseDoor /> },
-  { name: 'Elevator', icon: <BsHouseDoor /> },
-  { name: 'Elevator', icon: <BsHouseDoor /> },
   
   
 ]
@@ -119,11 +117,11 @@ export function Amenities ({data}) {
     <Container><Title>
         What this place has to offer
       </Title><ItemContainer>
-      {data.amenities.length > 1 ? 
+      {data && data.amenities.length > 1 ? 
       
       
         data && data.amenities.map(ele => 
-          ele !== 'translation missing: en.hosting_amenity_50' &&  <Item>
+          ele !== 'translation missing: en.hosting_amenity_50' &&  <Item key={ele.name}>
             {data && renderIcon(ele) }{ele}
           </Item>
         )

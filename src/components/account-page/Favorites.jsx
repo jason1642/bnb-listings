@@ -44,7 +44,7 @@ const Favorites = () => {
        <Title>Your favorites</Title>
        <CardWrapper>
       {
-        favoritesListData.map((data, i)=><Card styles={{margin: '0'}} key={i} data={data} />)
+        favoritesListData && favoritesListData.map((data, i)=><Card styles={{margin: '0'}} key={i} data={data} />)
        }
        </CardWrapper>
     </Container>

@@ -89,8 +89,8 @@ const Title = styled.div`
 const SuggestionCards = () => {
   return (<Container>
     
-    {cardsInfo.map((data, i) =>
-      <Card key={i}>
+    {cardsInfo.map(data =>
+      <Card key={data.name}>
         <CardImage  variant="top" src={data.image} />
         <CardBody>
           <Title>{data.name}</Title>
