@@ -1,6 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
-const baseUrl = process.env.Node_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
 
 
 // Create a new instance of axios with a custom config
