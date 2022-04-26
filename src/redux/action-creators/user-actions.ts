@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as Constants from '../constants'
-const baseUrl = process.env.Node_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
 const api = axios.create({
   baseURL: baseUrl,
 });
