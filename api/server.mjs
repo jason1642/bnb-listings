@@ -7,7 +7,7 @@ import config from 'config';
 import authRouter from './routes/auth.mjs';
 import airbnbHomeRouter from './routes/airbnb-search.mjs';
 // Heroku dynamically sets port by itself
-// const port = process.env.PORT || 5040; 
+const port = process.env.PORT || 5050; 
  
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(cors());
 app.use('/api/user', userRouter); 
 app.use('/api/user/auth', authRouter);
 app.use('/api/airbnb/listings', airbnbHomeRouter);
-app.listen(5050, () => console.log('listening on port ' + 5050));
+app.listen(port, () => console.log('listening on port ' + port));
 
  
 
