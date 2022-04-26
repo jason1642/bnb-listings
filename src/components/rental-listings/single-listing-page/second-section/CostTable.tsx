@@ -90,9 +90,9 @@ const Wrapper = styled.div`
   display: flex;
 
 `;
-const Total = styled.div`
+// const Total = styled.div`
   
-`;
+// `;
 const CostTable = ({ data }) => {
   const [numNights, setNumNights] = useState(1);
   // See accomdates for max extra
@@ -181,7 +181,7 @@ const CostTable = ({ data }) => {
 
         <Row
         style={{borderTop: '1px grey solid',borderBottom: 'none'}}
-        ><Span>Book Now</Span><Total>
+        ><Span>Book Now</Span>
         <Span>Total price: ${calculateTotal({
           nightState: numNights,
           nightPrice: data.price.$numberDecimal,
@@ -190,7 +190,7 @@ const CostTable = ({ data }) => {
           cleaningFee: data.cleaning_fee ? data.cleaning_fee.$numberDecimal : 0
         })
         .toLocaleString(navigator.language, { minimumFractionDigits: 0 })}</Span>
-      </Total></Row>
+      </Row>
       </Table>
 
       
