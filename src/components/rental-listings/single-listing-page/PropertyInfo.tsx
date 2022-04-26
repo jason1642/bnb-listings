@@ -9,7 +9,7 @@ import { addFavorite } from '../../../services/api-helpers.ts';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import Swal  from'sweetalert2'
 const baseUrl = process.env.NODE_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
-
+console.log(baseUrl)
 const Container = styled.div`
   padding-top: 40px;
   display: flex;

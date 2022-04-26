@@ -4,7 +4,7 @@ const baseUrl = process.env.NODE_ENV === 'production' ? 'https://reactbnb-listin
 const api = axios.create({
   baseURL: baseUrl,
 });
-
+console.log(baseUrl)
 export const logInUser = (userInput: any) => {
   // Uses /api/user/auth post to verify credentials, then grants a jwt and user info
   return (dispatch: any) => 
