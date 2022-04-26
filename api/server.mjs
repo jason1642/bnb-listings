@@ -36,8 +36,14 @@ connectDatabase();
 
 
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("./build"));
+}
 
-
+if (!config.get('PrivateKey')) {
+  console.error('FATAL ERROR: PrivateKey is not defined.');
+  process.exit(1);
+}
 
 
 // error handler
