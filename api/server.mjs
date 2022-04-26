@@ -20,10 +20,6 @@ app.listen(port, () => console.log('listening on port ' + port));
 
  
 
-if (!config.get('PrivateKey')) {
-  console.error('FATAL ERROR: PrivateKey is not defined.');
-  process.exit(1);
-}
 
  
  
@@ -37,7 +33,7 @@ connectDatabase();
 
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../build"));
+  app.use(express.static("../build/index.html"));
 }
 
 if (!config.get('PrivateKey')) {
