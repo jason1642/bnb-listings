@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Filter from '../../search/filter/Filter.tsx';
 import Card from './Card'
@@ -46,10 +46,13 @@ const Index = () => {
   const [listings, setListings] = useState();
 
   const handleFilter = data => {
+    console.log(data)
     setListings(data)
   }
 
-   
+  useEffect(() => {
+    console.log(listings)
+  }, [listings]);
 
   return (<Container>
     <Header>

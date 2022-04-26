@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+// import axios from 'axios';
 import qs from 'qs';
 import { getManyByQuery } from '../../../services/api-helpers.ts';
 // import e from 'express';
@@ -160,12 +160,13 @@ const Filter = ({handleFilter, listingsLength}) => {
 
     getManyByQuery(
     { params: { 'address.country': 'United States' } }).then((res) => {
+      console.log(res)
       setSearchResults(res)
-      // console.log(res)
     }, err => console.log(err));
 }, [])
 
   useEffect(() => {
+    console.log(searchResults)
     handleFilter(searchResults)
   }, [searchResults])
            
