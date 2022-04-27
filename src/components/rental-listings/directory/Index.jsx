@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Filter from '../../search/filter/Filter.tsx';
 import Card from './Card'
-
-
+import SkeletionCards from '../../../resources/SkeltonCards';
 
 const Container = styled.div`
-    /* background-color: #807770; */
+    background-color: #807770;
 
   display: flex;
   justify-content: flex-start;
   min-height: 100vh;
   flex-direction: column;
-  padding-top: 40px;
+  /* padding-top: 40px; */
+  flex-wrap: wrap;
   @media (max-width: 480px){
     width: 100%;
     padding-top: 90px;
@@ -59,7 +59,7 @@ const Index = () => {
       <Title>Search </Title>
       <Filter
         listingsLength={ listings && listings.length}
-    handleFilter={handleFilter}  />
+        handleFilter={handleFilter}  />
     </Header>
     
     
@@ -67,12 +67,12 @@ const Index = () => {
 
     
     {
-      listings ? listings.length > 0 && listings.map((data, i) => 
+      listings && listings.length > 0 ?listings.map((data, i) => 
         <Card
           key={i}
           data={data} /> 
         ) : 
-          <>No listings found</>
+          <SkeletionCards />
     }
   </CardContainer>
   </Container> );

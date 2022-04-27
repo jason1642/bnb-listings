@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { bindActionCreators } from 'redux'
-import { useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { userActions } from '../../redux/index';
-
+import { useNavigate} from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 
@@ -75,7 +76,10 @@ const Title = styled.div`
   color: white;
   font-weight: 300;
 `;
+
 const Login = () => {
+
+  const navigate = useNavigate()
   const [userInput, setUserInput] = useState({
     username: '',
     password: ''
@@ -85,13 +89,35 @@ const Login = () => {
   const { logInUser } = bindActionCreators(userActions, dispatch);
 
 
-  const handleLogin = async () =>
-    await logInUser(userInput).then(userData => {
-      
-      console.log('success');
-        return true;
-  },err=>false)
+  const handleLogin = async () => {
+    let timerInterval
 
+    await logInUser(userInput).then(userData => {
+      Swal.fire({
+        title: 'Successfully logged in!',
+        html: '...redirecting you to the Home page now',
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading()
+          timerInterval = setInterval(() => {
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          navigate("/");
+          window.location.reload()
+          // console.log('I was closed by the timer')
+        }
+      }, err => console.log(err))
+      console.log('success');
+    
+    })
+  }
   
   const handleChange = (e) => {
     setUserInput(prev => ({ ...prev, [e.target.name]: e.target.value }))

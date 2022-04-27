@@ -92,7 +92,7 @@ const Register = () => {
       Swal.fire({
         title: 'Successfully created account!!',
         html: '...redirecting you to the Log In page now',
-        timer: 2500,
+        timer: 2000,
         timerProgressBar: true,
         didOpen: () => {
           Swal.showLoading()

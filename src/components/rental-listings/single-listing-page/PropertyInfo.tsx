@@ -13,6 +13,7 @@ console.log(baseUrl)
 const Container = styled.div`
   padding-top: 40px;
   display: flex;
+  background-color: #8b8181c9;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
@@ -64,7 +65,7 @@ const SingleListingPage = ({currentUser}) => {
   const [listingData, setListingData] = useState<any>();
   const [isFavorited, setIsFavorited] = useState<Boolean>(false);
   useEffect(() => {
-    console.log(_id)
+    // console.log(_id)
     console.log(currentUser)
 
     axios(newOptions).then(res => {
@@ -76,11 +77,11 @@ const SingleListingPage = ({currentUser}) => {
 
 
   useEffect(() => {
-    console.log(currentUser)
-    const isInFavorites = (listingData && currentUser.authenticated === true) ? currentUser.favorites.find((ele: string) => ele === listingData._id) : -1
+    // console.log(currentUser)
+    const isInFavorites = (listingData && currentUser.authenticated === true) ? currentUser.favorites.findIndex((ele: string) => ele === listingData._id) : -1
     console.log(isInFavorites)
     isInFavorites !== -1 && setIsFavorited(true);
-    console.log(listingData)
+    // console.log(listingData)
   }, [currentUser, listingData]);
 
 
@@ -88,7 +89,7 @@ const SingleListingPage = ({currentUser}) => {
 
   const handleAddFavorite: HandleFavType = async() => {
     await addFavorite(currentUser._id, _id).then((res: string) => {
-      console.log(res)
+      // console.log(res)
       let timerInterval;
       res === 'added' ? setIsFavorited(false) : setIsFavorited(true);
               return res === 'added'?  Swal.fire({
@@ -127,7 +128,7 @@ const SingleListingPage = ({currentUser}) => {
         data={listingData} />
     
       {currentUser.authenticated &&
-        <Wrapper>{isFavorited ? <BsHeart style={{ color: 'red' }} /> : <BsHeartFill style={{ color: 'red' }} /> }
+        <Wrapper>{isFavorited ?  <BsHeartFill style={{ color: 'red' }} /> : <BsHeart style={{ color: 'red' }} />}
           
         <FavoriteButton onClick={handleAddFavorite}>
             {isFavorited ? 'Remove from' : 'Add to'} favorites

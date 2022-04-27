@@ -44,7 +44,7 @@ const Body = styled.div`
   padding: 10px;
   font-size: 13px;
   line-height: 22px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @media (max-width: 480px){
     overflow: scroll;

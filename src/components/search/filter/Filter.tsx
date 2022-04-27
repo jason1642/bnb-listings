@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 // import axios from 'axios';
 import qs from 'qs';
@@ -34,6 +34,7 @@ const Form = styled.form`
   flex-direction: row;
   /* border: 1px solid black; */
   padding: 12px;
+  background-color: #87756cc3;
   font-size: 13px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 14px;

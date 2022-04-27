@@ -101,7 +101,7 @@ const Index = (props) => {
             component="div"
             // sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-              LOGO
+              ReactBnB Listings
     {/* <Logo src={siteLogo}/> */}
     </Typography>
     {/* </LogoContainer> */}

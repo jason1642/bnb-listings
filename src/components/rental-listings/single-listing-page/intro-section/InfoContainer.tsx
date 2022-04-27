@@ -189,8 +189,7 @@ const InfoContainer = ({ data, openModal }) => {
       <Main>
         {data.host.host_is_superhost &&
           <SuperHost>
-            <p
-              style={styles.superhostTitle}
+            <p style={styles.superhostTitle}
             >{data.host.host_name}is a Superhost.</p> 
             <p style={styles.superhostDescription}>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
 
