@@ -53,7 +53,7 @@ const Container = styled.div`
 `
 const Title = styled.h2`
   display: flex;
-  font-size: 26px;
+  font-size: 2.2rem;
   font-weight: 300;
   padding: 15px 0px;
   padding-left: 25px;
@@ -72,7 +72,7 @@ const DetailRow = styled.div`
   display: flex;
   width: 100%;
   padding: 0px 10px;
-  font-size: 12px;
+  font-size: 1rem;
   color: #474747;
   justify-content: flex-start;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167); */
@@ -110,10 +110,10 @@ const Description = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.135), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 4px;
   margin-top: 5px;
-  font-size: 14px;
+  font-size: 1.3rem;
   font-weight: 400;
   text-align: left;
-  line-height: 20px;
+  line-height: 2rem;
   padding: 15px 12px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   @media (max-width: 480px){

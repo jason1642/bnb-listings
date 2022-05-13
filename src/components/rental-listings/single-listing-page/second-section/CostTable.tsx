@@ -38,7 +38,7 @@ const Title = styled.div`
   /* border: 1px solid black; */
   padding: 10px;
   font-weight: 300;
-  font-size: 26px;
+  font-size: 2.2rem;
 `;
 const Table = styled.div`
   height: 100%;
@@ -52,7 +52,7 @@ const Row = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
-  font-size: 14px;
+  font-size: 1.2rem;
   `
   const ButtonRow = styled.div`
     display: flex;
@@ -69,11 +69,16 @@ const Cost = styled.div`
 
 `
 const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-width: 0px;
   border-radius: 6px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 1.4rem;
   padding:0px 9px;
+  height: 35px;
+  width: 35px;
   background-color: orange;
   @media (max-width: 480px){
     padding:4px 9px;
@@ -81,6 +86,7 @@ const Button = styled.button`
   }
 `
 const Span = styled.div`
+  font-size: 1.3rem;
   margin: 0 5px;
   @media (max-width: 480px){
     font-size: 20px;
@@ -88,7 +94,7 @@ const Span = styled.div`
 `
 const Wrapper = styled.div`
   display: flex;
-
+  align-items: center;
 `;
 // const Total = styled.div`
   

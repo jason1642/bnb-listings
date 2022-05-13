@@ -42,8 +42,8 @@ const Body = styled.div`
   display: flex;
 
   padding: 10px;
-  font-size: 13px;
-  line-height: 22px;
+  font-size: 1.2rem;
+  line-height: 2rem;
   overflow-y: auto;
 
   @media (max-width: 480px){

@@ -32,7 +32,11 @@ const Title = styled.div`
 const StatsTable = styled.div`
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
+  /* flex-direction: column */
   flex-wrap: wrap;
+  align-self: center;
+  max-width: 1080px;
   /* border: 1px solid black; */
 
 `
@@ -46,18 +50,22 @@ const ReviewContainer = styled.div`
 const Item = styled.div`
   padding: 5px;
   /* height: 30px; */
+  /* min-height: 15px; */
   min-width: 240px;
   display: flex;
-  /* width: 46%; */
+  flex-direction: column;
+  width: 46%;
+  align-self: flex-start;
   text-align: left;
-  justify-content: flex-end;
+  /* justify-content: space-around; */
   align-items: center;
   margin: 0px;
 `;
 const Label = styled.div`
-  font-size: 10px;
+  font-size: 1rem;
   text-align: left;
   margin: 0 5px;
+  /* min-height: 15px; */
   /* width: 100px; */
   overflow: hidden;
 `;
@@ -79,7 +87,7 @@ const ReviewSection = ({ data }) => {
             <Label>{_.capitalize(ele.split('_')[2])}</Label>
 
             <ProgressBar
-              style={{ height: '8px', width: '50%', border: '1px solid black', backgroundColor: 'orange' }}
+              style={{  width: '50%', border: '1px solid black', justifySelf: 'flex-end', backgroundColor: 'orange' }}
               variant='info'
               now={review_scores[ele] * 10} />
            <Label> {review_scores[ele]}</Label>

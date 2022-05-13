@@ -10,6 +10,7 @@ const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   min-height: 70vh;
   /* padding: 15px; */
+  background-color: #836e65c3;
   width: 100%;
 `;
 const Title = styled.div`

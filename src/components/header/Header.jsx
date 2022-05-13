@@ -88,25 +88,18 @@ const Index = (props) => {
   
   return (
     <AppBar  style={styles.container}  position='static' id='outer-container'>
-      {/* <Main id="outer-container"> */}
       <Container style={styles.secondContainer} maxWidth={false}>
         <Toolbar
           style={styles.wrapper}
           disableGutters>
 
-    {/* <LogoContainer to='/' > */}
           <Typography variant="h3"
             style={styles.logo}
             noWrap
             component="div"
-            // sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
               ReactBnB Listings
-    {/* <Logo src={siteLogo}/> */}
     </Typography>
-    {/* </LogoContainer> */}
-    {/* <LoggedIn>{currentUser.authenticated ? 'Welcome, ' + currentUser.username : 'You are not logged in'}
-    </LoggedIn> */}
           
     <div style={{
       height: '100%',

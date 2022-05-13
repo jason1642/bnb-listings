@@ -88,6 +88,8 @@ const Title = styled.div`
 const ItemContainer = styled.div`
   /* border: 1px solid black; */
   display: flex;
+  justify-content: space-evenly;
+  /* align-items: flex-start; */
   flex-wrap: wrap;
   @media (max-width: 480px){
     padding-bottom: 14px;
@@ -100,6 +102,7 @@ const Item = styled.div`
   padding: 6px;
   margin: 5px;
   width: auto;
+  max-height: 50px;
   /* border: 1px solid black; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
