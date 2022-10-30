@@ -83,7 +83,7 @@ const Container = styled(Menu)`
   z-index: 500;
 `;   
 const Button = styled(Link)`
-
+  font-size: 1.3em;
   height: 30px;
   padding: 5px 16px;
   text-decoration: none;

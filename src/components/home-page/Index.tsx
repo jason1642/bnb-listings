@@ -18,9 +18,16 @@ const Title = styled.div`
   padding: 0;
   color: white;
 `;
-const Section = styled.div`
-  
+const MainSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
+const Section = styled.div`
+  /* display: flex; */
+
+`;
+
 const Image = styled.img`
   width :60%;
   border-radius: 10px;
@@ -37,22 +44,24 @@ const Span = styled(Link)`
   `
 const ImageContainer = styled(Link)`
   position: relative;
-  z-index: 0;
+  /* z-index: 0; */
   @media (max-width: 480px) {
     width: 100%;
     min-height: 290px;
-  }`;
+  }
+  `;
+
 const ImageText = styled.span`
-  position: absolute;
+  /* position: absolute; */
   color: white;
   background-color: #c0c0c0a3;
   border-radius: 10px;
   padding: 10px;
   font-weight: 600;
   font-size: 40px;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* top: 80%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
   @media (max-width: 480px) {
    width: 100%; 
   }`
@@ -63,13 +72,14 @@ interface IIndexProps {
 const Index: React.FunctionComponent<IIndexProps> = ({currentUser}) => {
   return (
     <Container>
-      <Title>My Airbnb</Title>
-      <Section>
+      {/* <Title>My Airbnb</Title> */}
+      <MainSection>
+        <ImageText>Find the right stay</ImageText>
         <ImageContainer to='/directory'>
         <Image src={'https://images.unsplash.com/photo-1648474814989-5f5be1d39aa3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1399&q=80'} />
-        <ImageText>Find the right stay</ImageText>
+       
         </ImageContainer>
-      </Section>
+      </MainSection>
 
 
 

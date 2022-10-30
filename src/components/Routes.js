@@ -16,7 +16,7 @@ const SiteRoutes = () => {
 
   // console.log(currentUser)
   return useRoutes([
-    { path: '/', element: <HomePage currentUser={currentUser}/> },
+    
     { path: '/login', element: currentUser.authenticated ? <Navigate to='/' replace /> : <Login /> },
     { path: '/register', element: currentUser.authenticated ? <Navigate to='/' replace /> : <Register /> },
     { path: '/directory', element: <Directory />},
@@ -29,7 +29,8 @@ const SiteRoutes = () => {
         { path: 'favorites', element: <Favorites /> }
       ]
     },
-    { path: '/areas/:name', element: <AreaNameListing />},
+    { path: '/areas/:name', element: <AreaNameListing /> },
+    { path: '/', element: <HomePage currentUser={currentUser} /> },
   ])
 }
 

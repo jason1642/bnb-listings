@@ -13,12 +13,9 @@ const Main = styled.div`
   display: flex;
   position: fixed;
   width: 100%;
-  /* height: 60px;
-  max-height: 50px; */
-  /* background-color: #796049b1 */
+
   background-color: #807770;
   z-index: 6000;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
   justify-content: space-between;
   align-items: center;
   @media (max-width: 480px) {
@@ -32,7 +29,8 @@ const Main = styled.div`
 const styles = {
   logo: {
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-    fontSize: '2.4rem'
+    fontSize: '2.3rem',
+    
   },
   wrapper: {
     width: '100%',
@@ -42,7 +40,8 @@ const styles = {
   },
   container: {
     backgroundColor: '#807770',
-    maxHeight: 65,
+    // maxHeight: 75,
+    // padding: '10px',
   },
   secondContainer: {
     height: '100%',
@@ -58,6 +57,11 @@ const Logo = styled.img`
 const LogoContainer = styled(Link)`
   /* height: 100%; */
   /* width: 50%; */
+  text-decoration: none;
+  color: white;
+  &:hover{
+    color: white,
+  }
 `;
 
 
@@ -92,15 +96,18 @@ const Index = (props) => {
         <Toolbar
           style={styles.wrapper}
           disableGutters>
-
+          <LogoContainer
+            to='/'
+          >
           <Typography variant="h3"
             style={styles.logo}
-            noWrap
+              noWrap
+              
             component="div"
           >
-              ReactBnB Listings
+              Air Bed and Breakfast
     </Typography>
-          
+          </LogoContainer>
     <div style={{
       height: '100%',
       display: 'flex',
@@ -110,7 +117,7 @@ const Index = (props) => {
           }}>
             {/* <MenuItem> */}
               <ButtonLink to='/directory'>
-            <Button size='large' sx={{my:2, color: 'white', display: 'block'}}>Search Rooms</Button> 
+            <Button size='large' sx={{my:2, fontSize: '1.3em',color: 'white', display: 'block'}}>Search Rooms</Button> 
             </ButtonLink>
           {/* </MenuItem> */}
 
