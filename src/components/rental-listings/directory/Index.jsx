@@ -56,7 +56,7 @@ const Index = () => {
 
   return (<Container>
     <Header>
-      <Title>Search </Title>
+      {/* <Title>Search </Title> */}
       <Filter
         listingsLength={ listings && listings.length}
         handleFilter={handleFilter}  />

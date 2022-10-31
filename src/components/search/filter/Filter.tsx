@@ -10,12 +10,13 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  margin: 25px 0px;
 `;
 
 
 const SearchBanner = styled.div`
   padding: 15px 20px;
-  font-size: 20px;
+  font-size: 1.8em;
   font-weight: 300;
 `
 
@@ -45,8 +46,9 @@ const Label = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.4em;
   gap: 4px;
-  /* border: 1px solid black; */
+  background-color: #d0c6bb;
   margin: 0 20px;
   padding: 10px;
   border-radius: 12px;
@@ -175,7 +177,7 @@ const Filter = ({handleFilter, listingsLength}) => {
   return (<Container>
     
     <Form>
-      <Title>Filters</Title>
+      {/* <Title>Filters</Title> */}
       <Group>
         <Label>House<Option
         onChange={handleCheckboxChange}
@@ -208,7 +210,7 @@ const Filter = ({handleFilter, listingsLength}) => {
       {/* <Group></Group> */}
     </Form>
     <SearchBanner>
-      Showing {listingsLength} results
+      Displaying {listingsLength} results
     </SearchBanner>
   </Container> );
 }
