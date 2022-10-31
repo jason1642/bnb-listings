@@ -39,7 +39,9 @@ const Container = styled.div`
   display: flex;
   flex-direction:column ;
   width: 50%;
+  padding: 10px;
   /* border: 1px solid black; */
+  
   height: 100%;
   border-radius: 14px;
   @media (max-width: 480px){
@@ -72,7 +74,7 @@ const DetailRow = styled.div`
   display: flex;
   width: 100%;
   padding: 0px 10px;
-  font-size: 1rem;
+  font-size: 1em;
   color: #474747;
   justify-content: flex-start;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.167); */
@@ -81,8 +83,10 @@ const DetailRow = styled.div`
 const Item = styled.div`
     /* border: 1px solid black; */
     padding: 5px;
+    padding-left: 0px;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
 `
 const Header = styled.div`
@@ -107,7 +111,7 @@ const SuperHost  = styled.div`
 `;
 const Description = styled.div`
   padding: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.135), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.135), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   border-radius: 4px;
   margin-top: 5px;
   font-size: 1.3rem;
@@ -127,6 +131,8 @@ const Button = styled.button`
   border: none;
   font-weight: 600;
   font-size: 1em;
+  display: flex;
+  margin: 0 auto;
   &:hover{
     cursor: pointer;
   }
@@ -136,6 +142,9 @@ const Price = styled.div`
   height: 100%;
 
 `
+const Span = styled.span`
+  /* display: flex; */
+`;
 const RowTwo = styled.div`
   display: flex;
   padding: 3px 10px;
@@ -152,6 +161,22 @@ const RowTwo = styled.div`
 const SpanItem = styled.div`
 
 `
+
+const ParagraphTitle = styled.span`
+  /* display: inline-flex; */
+  font-size: 1.1em;
+  font-weight: 500;
+
+`;
+const LocationRow = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 10px;
+`;
+
+
 interface IInfoContainerProps {
 }
 
@@ -168,7 +193,7 @@ const InfoContainer = ({ data, openModal }) => {
         {data.name}
         </Title>
         <RowTwo>
-          <SpanItem style={{color: 'purple'}}>
+          <SpanItem style={{color: '#1530f9'}}>
             Reviews: ({data.reviews.length})
         </SpanItem>
           {data.review_scores && <SpanItem style={{color: 'green'}}>
@@ -183,6 +208,7 @@ const InfoContainer = ({ data, openModal }) => {
         <Item> Beds: {data.beds }<BsDot /></Item>
         <Item> Bath: {Math.ceil(data.bathrooms.$numberDecimal) }</Item>
         </DetailRow>
+        <LocationRow>Location: {data.address.street}</LocationRow>
         
 </Header>
 
@@ -197,6 +223,9 @@ const InfoContainer = ({ data, openModal }) => {
         }
         <Description>
           {data.summary}
+          {data.access !== '' && <div style={{marginTop: '10px',}}>
+          <ParagraphTitle>Guest Access: </ParagraphTitle>
+          <Span>{data.access}</Span> </div>}
           <Button
             onClick={openModal}
           >Show more </Button>

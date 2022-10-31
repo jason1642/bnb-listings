@@ -13,7 +13,7 @@ console.log(baseUrl)
 const Container = styled.div`
   padding-top: 40px;
   display: flex;
-  background-color: #8b8181c9;
+  background-color: #d0c6bb;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;

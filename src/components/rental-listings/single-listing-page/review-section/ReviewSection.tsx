@@ -22,7 +22,9 @@ const Title = styled.div`
   border-top: 1px solid black;
   width: 100%;
   text-align: left;
+  font-size: 1.4em;
   padding: 15px;
+  padding-top: 40px;
   padding-left: 20px;
   display: flex;
   justify-content: flex-start;

@@ -65,7 +65,7 @@ const renderIcon = (val) => {
 }
 
 const Container = styled.div`
-  width: 58%;
+  width: 50%;
   /* border: 1px solid black; */
   /* padding:  */
   margin-left: 9px;
@@ -79,17 +79,19 @@ const Title = styled.div`
   width: 100%;
   /* background-color: grey; */
   /* padding: 5px 0; */
+  
   display: flex;
   justify-content: center;
   align-items:center;
   font-weight: 300;
-  font-size: 26px;
+  font-size: 2.5em;
 `;
 const ItemContainer = styled.div`
   /* border: 1px solid black; */
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   /* align-items: flex-start; */
+  
   flex-wrap: wrap;
   @media (max-width: 480px){
     padding-bottom: 14px;
@@ -101,11 +103,12 @@ const Item = styled.div`
   align-items:center;
   padding: 6px;
   margin: 5px;
-  width: auto;
+  width: 30%;
   max-height: 50px;
-  /* border: 1px solid black; */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+  font-size: 1.4em;
+  font-weight: 300;
+  text-align: left;
+  justify-content: flex-start;
   & * {
     margin-right: 5px;
   }
@@ -117,15 +120,17 @@ const Item = styled.div`
 
 export function Amenities ({data}) {
   return (
-    <Container><Title>
-        What this place has to offer
-      </Title><ItemContainer>
+    <Container>
+      <Title>
+       Amenities
+    </Title>
+      <ItemContainer>
       {data && data.amenities.length > 1 ? 
       
       
         data && data.amenities.map(ele => 
           ele !== 'translation missing: en.hosting_amenity_50' &&  <Item key={ele.name}>
-            {data && renderIcon(ele) }{ele}
+            {data && renderIcon(ele) }<span style={{color: 'black',}}>{ele}</span>
           </Item>
         )
       

@@ -8,7 +8,9 @@ const Container = styled.div`
   /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 60px;
   @media (max-width: 480px){
     flex-direction: column;
   }

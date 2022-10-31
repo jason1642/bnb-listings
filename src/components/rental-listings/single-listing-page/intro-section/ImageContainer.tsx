@@ -13,11 +13,11 @@ const Container = styled.div`
   background-color: cyan; */
   margin: 0 auto;
   margin-top: 0px;
-  height: 75%;
+  height: 80%;
 
   position: relative;
   display: flex;
-  width: 33%;
+  width: 40%;
   
   &:after{
     display: block;
