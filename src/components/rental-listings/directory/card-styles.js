@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 export const Container = styled(Link)`
   display: flex;
-  width: 260px;
+  width: 320px;
   flex-direction: column;
   margin: 5px;
   text-decoration: none;
   color: black;
   @media (min-width: 1000px) {
-    width: 260px;
+    /* width: 260px; */
   }
 `;
 export const Image = styled.img`
@@ -22,7 +23,7 @@ export const Image = styled.img`
 
 `
 export const ImageContainer = styled.div`
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   /* height: 100px; */
   position: relative;
   display: flex;
@@ -37,15 +38,18 @@ export const Title = styled.div`
   
 `;
 export const Name = styled.div`
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1.6em;
   text-align: left;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   max-width: 70%;
 `
 
 export const Price = styled.div`
     text-align: left;
-    margin-left: 10px;
+    font-size: 1.4em;
+
+    /* margin-left: 10px; */
 
 `;
 export const InfoContainer = styled.div`
@@ -69,6 +73,19 @@ export const RowOne = styled.div`
 `;
 export const PropertyType = styled.div`
   margin-right: 10px;
+  font-size: 1.4em;
+
+`;
+
+export const Span = styled.div`
+  display: flex;
+
+`;
+export const ScoreNumber = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3em;
 `;
 
 export const RowTwo = styled.div`
@@ -82,9 +99,15 @@ export const RowTwo = styled.div`
 
 
 `;
+
+export const RowThree = styled.div`
+  display: flex;
+`;
 export const Country = styled.div`
     margin-right: 10px;
     text-align: right;
+    font-size: 1.4em;
+
 
 `;
 

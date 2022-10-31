@@ -1,8 +1,10 @@
 import React, {  useRef } from 'react';
 // import styled from 'styled-components';
+import StarIcon from '@mui/icons-material/Star';
+
 
 import {
-  Container,Image, Country, PropertyType, ImageContainer, InfoContainer, Name, Title, Price,RowOne,RowTwo,FavButton} from './card-styles'
+  Container,Image, Country, PropertyType, ImageContainer, InfoContainer, Name, Title, Span, Price,RowOne,RowTwo, RowThree, ScoreNumber, FavButton} from './card-styles'
 
 
 
@@ -11,7 +13,7 @@ import {
 // =================================
 const Card = ({data}) => {
   const hideContainer = useRef(0);
-
+  const review_score = data.review_scores ? data.review_scores.review_scores_rating / 20 : '4.6'
 
   return (<Container to={`/listings/${data._id}`} ref={hideContainer} >
     <ImageContainer>
@@ -20,17 +22,26 @@ const Card = ({data}) => {
     </ImageContainer>
     
 
-    <InfoContainer>
+    <InfoContainer> 
       <RowOne>
         <Name>{data.name}</Name>
-        <PropertyType>{data.property_type}</PropertyType>
+        <Span>
+          <StarIcon style={{ color: '#ffcd50', }} />
+          <ScoreNumber>{review_score}</ScoreNumber>
+        </Span>
       </RowOne>
 
       
       <RowTwo>
+        <PropertyType>{data.property_type}</PropertyType>
+
         <Price>${data.price.$numberDecimal} / night</Price>
         <Country>{data.address.street}</Country>
-    </RowTwo>
+      </RowTwo>
+      
+      <RowThree>
+
+      </RowThree>
     </InfoContainer>
 
   </Container> );
