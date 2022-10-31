@@ -79,13 +79,16 @@ export const PropertyType = styled.div`
 
 export const Span = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
 
 `;
 export const ScoreNumber = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3em;
+  /* justify-content: center;
+  align-items: center; */
+  font-size: 1.5em;
+  font-weight: 500;
 `;
 
 export const RowTwo = styled.div`

@@ -5,7 +5,7 @@ import Card from './Card'
 import SkeletionCards from '../../../resources/SkeltonCards';
 
 const Container = styled.div`
-    background-color: #807770;
+    /* background-color: #807770; */
 
   display: flex;
   justify-content: flex-start;

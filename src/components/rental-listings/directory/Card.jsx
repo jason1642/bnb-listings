@@ -24,7 +24,7 @@ const Card = ({data}) => {
 
     <InfoContainer> 
       <RowOne>
-        <Name>{data.name}</Name>
+        <Name>{data.address.street}</Name>
         <Span>
           <StarIcon style={{ color: '#ffcd50', }} />
           <ScoreNumber>{review_score}</ScoreNumber>
@@ -36,7 +36,7 @@ const Card = ({data}) => {
         <PropertyType>{data.property_type}</PropertyType>
 
         <Price>${data.price.$numberDecimal} / night</Price>
-        <Country>{data.address.street}</Country>
+        {/* <Country>{data.address.street}</Country> */}
       </RowTwo>
       
       <RowThree>
