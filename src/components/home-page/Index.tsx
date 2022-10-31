@@ -29,7 +29,7 @@ const Section = styled.div`
 `;
 
 const Image = styled.img`
-  width :60%;
+  width :90%;
   border-radius: 10px;
   z-index: 0;
   @media (max-width: 480px) {
@@ -45,16 +45,17 @@ const Span = styled(Link)`
 const ImageContainer = styled(Link)`
   position: relative;
   /* z-index: 0; */
+  width: 50%;
   @media (max-width: 480px) {
     width: 100%;
     min-height: 290px;
   }
   `;
 
-const ImageText = styled.span`
+const ImageText = styled.div`
   /* position: absolute; */
   color: white;
-  background-color: #c0c0c0a3;
+  /* background-color: #c0c0c0a3; */
   border-radius: 10px;
   padding: 10px;
   font-weight: 600;
