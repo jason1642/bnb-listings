@@ -59,7 +59,7 @@ const ImageText = styled.div`
   border-radius: 10px;
   padding: 10px;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 4em;
   /* top: 80%;
   left: 50%; */
   /* transform: translate(-50%, -50%); */

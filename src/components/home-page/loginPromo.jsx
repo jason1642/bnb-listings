@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 const Container = styled(Link)`
   /* width: 80%; */
-  margin: 50px 0;
+  /* margin: 50px 0; */
   display: flex;
   justify-content: center;
   align-items: center;
   
 `;
 const Image = styled.img`
-width: 75%;
+/* width: 75%; */
 border-radius: 15px;
 @media (max-width: 480px) {
    width: 100%; 
@@ -20,10 +20,11 @@ border-radius: 15px;
 `
 const Text = styled.div`
   position: absolute;
-  font-size: 35px;
+  font-size: 2.6em;
+  border-radius: 10px;
   color: black;
   padding: 15px;
-  background-color: #ccc4c4a7;
+  background-color: #eeeeee;
   /* bottom: 0px; */
   `
 

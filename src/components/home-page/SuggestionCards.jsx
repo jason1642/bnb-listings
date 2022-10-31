@@ -8,9 +8,11 @@ import { cardsInfo } from '../../resources/homeCardsInfo'
 const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   /* border: 1px solid  black; */
-  min-height: 70vh;
+  /* min-height: 70vh; */
   margin-top: 140px;
+  margin-bottom: 100px;
   @media (max-width: 480px) {
    width: 100%; 
    flex-wrap: wrap;
@@ -20,10 +22,14 @@ const Container = styled.div`
 `;
 
 const Card = styled.div`
-  width: 190px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+  justify-content: center;
+  width: 340px;
   margin: 10px;
   border-radius: 14px;
-  height: 300px;
+  height: 500px;
   @media (max-width: 480px) {
    width: 45%; 
    margin: 10px 0;
@@ -46,7 +52,10 @@ const ButtonLink = styled(Link)`
   margin: 0 auto;
   margin-top: 12px;
   justify-content: center;
+  /* justify-self: center;
+  align-self: flex-end; */
   border-width: 0px;
+  font-size: 1.4em;
   background-color: #5353e3;
   color: white;
   text-decoration: none;
@@ -60,12 +69,12 @@ const CardBody = styled.div`
   padding: 10px;
   background-color: #bf9f7e;
   height: 40%;
-  margin: 10px 0;
+  /* margin: 10px 0; */
   /* height: 46px; */
-  /* border-radius: 0 0 14px 14px; */
+  border-radius: 0 0 14px 14px;
 `
 const Text = styled.div`
-  font-size: 1em;
+  font-size: 1.2em;
   padding: 5px;
   line-height: 18px;
   /* height: 60px; */
@@ -75,7 +84,7 @@ const Text = styled.div`
 
 
 const Title = styled.div`
-  
+  font-size: 1.5em;
 `;
 
 
