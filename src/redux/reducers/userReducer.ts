@@ -8,7 +8,7 @@ const initialState = {
 }
 
 // interface userType {name: string, password: string, type: string, payload: undefined | }
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: any) => {
 
   switch (action.type) {
     case LOG_IN_USER:

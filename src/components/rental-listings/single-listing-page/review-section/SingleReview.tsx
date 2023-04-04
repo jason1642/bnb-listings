@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { BsPersonCircle } from 'react-icons/bs';
 import styled from 'styled-components';
 import { format } from 'fecha';
@@ -72,7 +71,7 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export function SingleReview({ data }) {
+const SingleReview: React.FunctionComponent<{data: any}> = ({ data }) => {
   
 
   const { reviewer_name, comments, date } = data;
@@ -90,7 +89,7 @@ export function SingleReview({ data }) {
       <DateCreated>
         {
           
-          format(new Date(parse(date, 'isoDateTime')), 'MMM: YYYY')}
+          format(new Date(parse(date, 'isoDateTime')!), 'MMM: YYYY')}
       </DateCreated>
       </TextContainer>
     </Header>
@@ -101,3 +100,5 @@ export function SingleReview({ data }) {
   </Container>
   );
 }
+
+export default SingleReview

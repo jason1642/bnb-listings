@@ -5,7 +5,7 @@ import { BsFillStarFill } from 'react-icons/bs';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import _ from 'lodash';
-import { SingleReview } from './SingleReview';
+import  SingleReview  from './SingleReview';
 
 const Container = styled.div`
   min-height: 70vh;

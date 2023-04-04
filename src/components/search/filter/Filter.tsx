@@ -77,7 +77,7 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
   // Filters: country, city, price, beds, accomodation(guests), options from amenities array 
   // Should be spelled same as in database model
   // Probably just a single object property or string to be used in query
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<Array<any>>([]);
  
   // ========================================================
   // ====   Query mongoose, embedded documents - jsn string to access object "address.country" : "United States"
@@ -95,7 +95,7 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
 
     
 
-  const [checkboxOptions, setCheckboxOptions] = useState({
+  const [checkboxOptions, setCheckboxOptions] = useState<{[index: string]: any}>({
     House: false,
     Apartment: false,
     Loft: false,
@@ -107,7 +107,7 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
   const handleArrayChange = (val: string, bool: boolean, optionName: string, queryArr?: Array<AnyObject>) => {
     if (bool) {
       console.log(queryArr)
-      setSearchResults(prev => [...prev, ...queryArr].reverse())
+      setSearchResults(prev => [...prev, ...(queryArr?.reverse() || [])])
     } else {
       const filteredArray = searchResults.filter(ele=> ele.property_type !== val)
       setSearchResults(filteredArray)
@@ -118,7 +118,7 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
   const handleCheckboxChange = (e: any) => {
     console.log('TOGGLE FUNCTION')
     const optionValue = e.target.value;
-    const oppositeBool = !checkboxOptions[e.target.value];
+    const oppositeBool: boolean = !checkboxOptions[e.target.value];
     // Toggles options object based on element name respectively
     // Cannot use state value within this function due to not updating for some reason, only after function
     setCheckboxOptions(prev => ({
@@ -139,7 +139,7 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
               // all values should be Objects to be queried one at a time and added to state array and taken out on toggle
               // "address.country": ['Portugal'],
              {[e.target.name]: optionValue } // Object
-      , paramsSerializer: params => {
+      , paramsSerializer: (params: any) => {
           return qs.stringify(params, { indices: false })
         }
           }).then(res => {
@@ -153,7 +153,7 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
       }, err=> console.log(err))
 
         } else if (oppositeBool === false) {
-          handleArrayChange(optionValue, false,  e.target.name, null);
+          handleArrayChange(optionValue, false,  e.target.name, undefined);
         }
       }
     }

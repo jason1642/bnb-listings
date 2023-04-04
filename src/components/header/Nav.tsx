@@ -10,7 +10,7 @@ import {removeToken} from '../../services/api-helpers'
 
 
 
-const styles = {
+const styles: any = {
   bmBurgerButton: {
     position: 'relative',
     width: '36px',

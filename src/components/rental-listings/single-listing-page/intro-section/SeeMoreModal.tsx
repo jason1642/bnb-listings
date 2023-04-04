@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 export interface ISeeMoreModalProps {
 }
 
-function SeeMoreModal({ closeModal, data}) {
+const SeeMoreModal: React.FunctionComponent<{closeModal: Function, data: any}> = ({ closeModal, data}) => {
   return (<Container>
 
     <Wrapper>

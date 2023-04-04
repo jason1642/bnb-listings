@@ -1,13 +1,7 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
 import { BsDot } from "react-icons/bs";
-
-
-
-
 import styled from 'styled-components';
 
-const styles = {
+const styles: any = {
   superhostTitle: {
     fontWeight: '600',
     margin: '0',
@@ -180,7 +174,7 @@ const LocationRow = styled.div`
 interface IInfoContainerProps {
 }
 
-const InfoContainer = ({ data, openModal }) => {
+const InfoContainer: React.FunctionComponent<{data: any, openModal: Function}> = ({ data, openModal }) => {
   
   // If host is superhost display banner, if not hide 
   //display host picture
@@ -227,7 +221,7 @@ const InfoContainer = ({ data, openModal }) => {
           <ParagraphTitle>Guest Access: </ParagraphTitle>
           <Span>{data.access}</Span> </div>}
           <Button
-            onClick={openModal}
+            onClick={()=>openModal()}
           >Show more </Button>
         
         </Description>

@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 interface IImageContainerProps {
 }
@@ -41,7 +39,7 @@ const Image = styled.img`
 `;
 
 
-const ImageContainer= ({data}) => {
+const ImageContainer: React.FunctionComponent<{data: any}> = ({data}) => {
   return (
     <Container>
       <Image
