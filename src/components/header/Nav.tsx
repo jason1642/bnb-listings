@@ -144,22 +144,19 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
     >
 
       {currentUser.authenticated ?
-        <>
-        <MenuItem onClick={handleClose}><InnerLink to='/directory'>View Houses</InnerLink></MenuItem>
-          <MenuItem onClick={handleClose}  ><InnerLink to='/account/favorites' >View Favorites</InnerLink></MenuItem>
-          {/* <MenuItem onClick={()=>setIsOpen(false)}  to={`/account`}>My Account</MenuItem>
-          <MenuItem onClick={() => {
-            handleLogout()
-            setIsOpen(false)
-          }
-          } to='/'>Log Out</MenuItem> */}
-        </>
+        [
+        <MenuItem onClick={handleClose}><InnerLink to='/directory'>View Houses</InnerLink></MenuItem>,
+          <MenuItem onClick={handleClose}><InnerLink to='/account/favorites' >View Favorites</InnerLink></MenuItem>,
+          <MenuItem onClick={handleClose}><InnerLink to='/account' >My Account</InnerLink></MenuItem>,
+          <MenuItem onClick={handleClose}><InnerLink to='/' >Log Out</InnerLink></MenuItem> 
+
+        ]
         :
-        <>
-          {/* <Button to='/directory' onClick={()=>setIsOpen(false)} >View Houses</Button>
-          <Button  to='/register' onClick={()=>setIsOpen(false)} >Register</Button>
-          <Button  to='/login' onClick={()=>setIsOpen(false)} >Log In</Button> */}
-        </>
+     [
+          <Button onClick={handleClose} ><InnerLink to='/directory'>View Houses</InnerLink></Button>,
+          <Button onClick={handleClose} ><InnerLink to='/register'>Register</InnerLink></Button>,
+          <Button onClick={handleClose} ><InnerLink to='/login'>Log In</InnerLink></Button>
+     ]
       }
       </Menu>
       </div>
