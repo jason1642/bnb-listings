@@ -1,10 +1,11 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {actionCreators, userActions } from './redux/index'
+import { userActions } from './redux/index'
 import { useEffect, useState } from 'react';
 import SiteRoutes from './components/Routes'
 import Header from './components/header/Header.jsx';
+import { RootState } from './redux/reducers';
 
 function App() {
 
@@ -12,19 +13,19 @@ function App() {
   // Can be called anything and can return any number of states if you
   // only need to use certain ones.
   // Appears to be unable to be deconstructed
-  const currentUser = useSelector((state) => state.currentUser)
+  const currentUser = useSelector((state: RootState) => state.currentUser)
   const dispatch = useDispatch()
   const [didAutheticate, setDidAuthenticate] = useState(true)
   const [isResolved, setIsResolved] = useState(false)
   // Returns the state from the store.js folder in redux
-  const { verifyUser } = bindActionCreators(userActions, dispatch);
+  const { verifyUser }: {verifyUser: any} = bindActionCreators(userActions, dispatch);
   
   const handleVerify = async () => {
-    verifyUser().then(e => {
+    verifyUser().then((e: any) => {
       currentUser.authenticated ?
     setDidAuthenticate(true) :
     setDidAuthenticate(false);
-    }, err=>console.log(err))
+    }, (err: any)=>console.log(err))
     
     setIsResolved(true)
   }
@@ -50,7 +51,10 @@ useEffect(() => {
     <div className="App">
       <Header />
       {
-        isResolved && <SiteRoutes didAuthenticate={didAutheticate} />
+        isResolved && 
+        <SiteRoutes 
+        // didAuthenticate={didAutheticate} 
+        />
     
       }
     </div>
