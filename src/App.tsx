@@ -5,11 +5,12 @@ import Header from './components/header/Header.jsx';
 import {  useVerifyUserQuery } from './redux/features/userApi';
 
 const App = () => {
-  const {data, isLoading } = useVerifyUserQuery()
+  const {data, isLoading } = useVerifyUserQuery<{data: any, isLoading: boolean}>()
   
  
 useEffect(() => {
   console.log(data)
+  
 }, [data]);
 
   return (

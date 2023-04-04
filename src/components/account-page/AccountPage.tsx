@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { useSelector} from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { getAllFavorites } from '../../services/api-helpers'
-// import type { RootState } from '../../redux/reducers';
+import {  useVerifyUserQuery } from '../../redux/features/userApi';
 import Nav from './Nav'
+
 interface IAccountPageProps {
 }
 
@@ -26,12 +26,11 @@ const Container = styled.div`
   `
 
 
-const AccountPage: React.FunctionComponent<IAccountPageProps> = (props) => {
- 
+const AccountPage: React.FunctionComponent<IAccountPageProps> = () => {
+   const { data: {currentUser}, isLoading } = useVerifyUserQuery<{data: any, isLoading: boolean}>()
 
-  const [favoritesListData, setFavoritesListData] = useState([]);
-  const currentUser:any = useSelector((state: any) => state.currentUser);
-  // const { verifyUser } = bindActionCreators(userActions, dispatch);
+
+  const [favoritesListData, setFavoritesListData] = useState();
   const Main = styled.div`
     min-height: 30vh;
     width: 100%;
@@ -50,28 +49,37 @@ const AccountPage: React.FunctionComponent<IAccountPageProps> = (props) => {
   }`;
   // url is account/:id
   useEffect(() => {
+    console.log(currentUser)
+    console.log(isLoading)
     // currentUser.username ? setIsAuthorized(true) : setIsAuthorized(false)
+   if(currentUser)  { 
     console.log(currentUser._id)
     getAllFavorites(currentUser._id)
       .then(res => {
         setFavoritesListData(res.data)
       },
         err => { console.log(err) })
-  }, [currentUser]);
+
+    }
+  }, [currentUser])
+
+
  useEffect(() => {
    console.log(favoritesListData)
+   console.log(currentUser)
+   console.log(isLoading)
 
- }, [favoritesListData]);
+ }, [favoritesListData, currentUser]);
   return (
     <Container>    
-      {currentUser ? <>
+      {!isLoading && currentUser ? <>
         {/* <Title>Your Account</Title> */}
         <Wrapper>
         <Nav />
         <Main>
           
           {/* mydetails and favorites components on path /account/details /account/favorites */}
-          <Outlet context={ [favoritesListData, currentUser]}/>
+          <Outlet context={ [ currentUser]}/>
           
           {/* Container to have account details or fav list based on url path /account/favorites /account/details */}
         </Main>

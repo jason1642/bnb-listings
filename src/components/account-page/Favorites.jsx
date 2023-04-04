@@ -37,15 +37,15 @@ const CardWrapper = styled.div`
 // >(): Context;
 const Favorites = () => {
   
-  const [favoritesListData] = useOutletContext()
-  console.log(favoritesListData)
+  const [currentUser] = useOutletContext()
+  console.log(currentUser)
    return (
     <Container>
       
        <Title>Your favorites</Title>
        <CardWrapper>
       {
-        favoritesListData && favoritesListData.map((data, i)=><Card styles={{margin: '0'}} key={i} data={data} />)
+        currentUser && currentUser.favorites.map((data, i)=><Card styles={{margin: '0'}} key={i} data={data} />)
        }
        </CardWrapper>
     </Container>
