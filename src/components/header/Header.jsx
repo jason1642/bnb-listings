@@ -1,30 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
-// import siteLogo from '../../resources/treeLogo.svg';
+import {  useVerifyUserQuery } from '../../redux/features/userApi';
 import Nav from './Nav'
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { AppBar, Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 import { Toolbar } from '@mui/material';
-// import { MenuItem } from '@mui/material';
-// const Main = styled.div`
-//   display: flex;
-//   position: fixed;
-//   width: 100%;
-
-//   background-color: #807770;
-//   z-index: 6000;
-//   justify-content: space-between;
-//   align-items: center;
-//   @media (max-width: 480px) {
-//     border-bottom: 1px solid black;
-//     max-height: 70px;
-//     height: 70px;
-//   }
-// `; 
-
 
 const styles = {
   logo: {
@@ -40,23 +22,15 @@ const styles = {
   },
   container: {
     backgroundColor: '#807770',
-    // maxHeight: 75,
-    // padding: '10px',
+
   },
   secondContainer: {
     height: '100%',
   }
 }
-const Logo = styled.img`
-  height: 100%;
-  width: 50px;
-  @media (max-width: 480px) {
-    height: 60px;
-  }
-`;
+
 const LogoContainer = styled(Link)`
-  /* height: 100%; */
-  /* width: 50%; */
+
   text-decoration: none;
   color: white;
   &:hover{
@@ -66,7 +40,6 @@ const LogoContainer = styled(Link)`
 
 
 const ButtonLink = styled(Link)`
-  /* background-color: green; */
   height: 100%;
   text-decoration: none;
   color: #e1dfdf;
@@ -78,17 +51,13 @@ const ButtonLink = styled(Link)`
   &:hover{
     cursor: pointer;
   }
-`;
-const LoggedIn = styled.div`
-  
-  @media (max-width: 480px) {
-    display: none;
-  }
-`;
-const Index = (props) => {
+`
+const Index = () => {
+  const {data, isLoading } = useVerifyUserQuery()
 
-
-  const currentUser = useSelector(state => state.currentUser)
+  React.useEffect(() => {
+    // console.log(data)
+  }, [data]);
   
   return (
     <AppBar  style={styles.container}  position='static' id='outer-container'>
@@ -115,16 +84,14 @@ const Index = (props) => {
       justifyContent: 'center',
       alignItems: 'center'
           }}>
-            {/* <MenuItem> */}
               <ButtonLink to='/directory'>
             <Button size='large' sx={{my:2, fontSize: '1.3em',color: 'white', display: 'block'}}>Search Rooms</Button> 
             </ButtonLink>
-          {/* </MenuItem> */}
 
-            <Nav currentUser={currentUser} /></div>
+           {!isLoading && <Nav currentUser={data} />}
+            </div>
           </Toolbar>
       </Container>
-        {/* </Main> */}
   </AppBar>
       
     

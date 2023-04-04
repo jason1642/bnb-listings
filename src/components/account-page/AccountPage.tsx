@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useSelector} from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { getAllFavorites } from '../../services/api-helpers'
-import type { RootState } from '../../redux/reducers';
+// import type { RootState } from '../../redux/reducers';
 import Nav from './Nav'
 interface IAccountPageProps {
 }
@@ -30,7 +30,7 @@ const AccountPage: React.FunctionComponent<IAccountPageProps> = (props) => {
  
 
   const [favoritesListData, setFavoritesListData] = useState([]);
-  const currentUser:any = useSelector((state: RootState) => state.currentUser);
+  const currentUser:any = useSelector((state: any) => state.currentUser);
   // const { verifyUser } = bindActionCreators(userActions, dispatch);
   const Main = styled.div`
     min-height: 30vh;

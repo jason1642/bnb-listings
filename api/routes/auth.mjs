@@ -42,22 +42,25 @@ authRouter.post('/', async (req, res) => {
   // console.log(req.headers)
 });
 
+
+
 authRouter.post('/verify', async (req, res, next) => {
-  // console.log(req.body)
-  // const authHeader = req.headers['authorization'];
-  // const token = authHeader && authHeader.split(' ')[1];
-  // if (token == null) return res.status(403).send('no token found'); 
-  try {
-    jwt.verify(req.body.token, process.env.TOKEN_SECRET,
-      async (err, user) => {
-        // console.log(user)
-        if (err) return res.status(403).send('invalid token')
-        return await User.findOne({ _id: user._id }).then(userRes => res.send(userRes))
-      }
-    );
-  } catch (err) {
-    return res.status(403).send('Invalid token')
-  }
-})
+  // console.log(req.body.token, 'this is the verify token')
+  const user = await jwt.verify(req.body.token, process.env.TOKEN_SECRET)
+  if (!user) return res.status(403).send('invalid token')    
+      console.log(user._id)
+      const returnUser = await User.findById( user._id )
+      console.log(returnUser)
+      if(!returnUser)return res.status(401).send('User is not found')
+      
+      // Mongodb error when setting user to active
+      // console.log(userData)
+      // userData.active = true
+      // await userData.save()
+      return res.send(returnUser)
+    }
+  
+
+)
 
 export default authRouter;

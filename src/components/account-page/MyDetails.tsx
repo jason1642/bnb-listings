@@ -88,7 +88,7 @@ const Info = styled.div`
   font-size: 12px;
 `;
 const Image = styled.img`
-  width: 100%;
+  width: 90%;
 `;
 
 const MyDetails: React.FunctionComponent<IMyDetailsProps> = () => {
