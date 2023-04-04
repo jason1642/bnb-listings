@@ -65,10 +65,10 @@ const Label = styled.label`
 const Option = styled.input`
   border: 1px solid black;
 `;
-const Title = styled.div`
-  font-size: 26px;
-  font-weight: 300;
-`;
+// const Title = styled.div`
+//   font-size: 26px;
+//   font-weight: 300;
+// `;
 
 
 
@@ -172,6 +172,7 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
   useEffect(() => {
     console.log(searchResults)
     handleFilter(searchResults)
+                // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchResults])
            
   // If turned true, query and add to array, if turned false filter array of prop

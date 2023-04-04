@@ -43,8 +43,8 @@ const Title = styled.div`
 const Table = styled.div`
   height: 100%;
 `
-interface ICostTableProps {
-}
+// interface ICostTableProps {
+// }
 const Row = styled.div`
   width: 95%;
   padding: 14px 10px;
