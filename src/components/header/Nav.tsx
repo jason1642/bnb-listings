@@ -2,14 +2,15 @@ import * as React from 'react';
 import {useState} from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import {slide as Menu} from 'react-burger-menu'
+// import {slide as Menu} from 'react-burger-menu'
 import {removeToken} from '../../services/api-helpers'
 // import { bindActionCreators } from 'redux';
 // import { userActions } from '../../redux/index';
 // import { useDispatch } from 'react-redux';
-
-
-
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import MenuIcon from '@mui/icons-material/Menu';
 const styles: any = {
   bmBurgerButton: {
     position: 'relative',
@@ -79,20 +80,20 @@ interface INavProps {
     authenticated: boolean
   }
 }
-const Container = styled(Menu)`
-  z-index: 500;
-`;   
-const Button = styled(Link)`
-  font-size: 1.3em;
-  height: 30px;
-  padding: 5px 16px;
+const InnerLink = styled(Link)`
   text-decoration: none;
-  color: black;
-  width: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`   
+`;   
+// const Button = styled(Link)`
+//   font-size: 1.3em;
+//   height: 30px;
+//   padding: 5px 16px;
+//   text-decoration: none;
+//   color: black;
+//   width: 150px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `   
 const handleLogout = ( ) => {
   localStorage.clear();
   removeToken();
@@ -103,49 +104,64 @@ const handleLogout = ( ) => {
 
 
 const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => {
-
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   // const dispatch = useDispatch()
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  
+  
 
   // const {logUser} = bindActionCreators(userActions, dispatch);
   const handleClose = () => {
-    setIsOpen(!isOpen)
-    console.log(isOpen)
-  }
+    setAnchorEl(null);
+  };
   
   return (
-    <div onClick={handleClose}>
-
+    <div>
+  <Button
+        id="basic-button"
+        variant='text'
+        sx={{color: 'black'}}
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      >
+        <MenuIcon sx={{fontSize: '3.5em'}} />
+      </Button>
     
-    <Container
-      isOpen={isOpen}
-      
-      onOpen={()=>setIsOpen(true)}
-      right
-      styles={styles}   
-      outerContainerId={"outer-container"}
-      pageWrapId={"page-wrap"}
+    <Menu
+      open={open}       
+      onClose={handleClose}
+      anchorEl={anchorEl}
+
+      // styles={styles}   
+      // outerContainerId={"outer-container"}
+      // pageWrapId={"page-wrap"}
     >
 
       {currentUser.authenticated ?
         <>
-        <Button onClick={()=>setIsOpen(false)} to='/directory'>View Houses</Button>
-          <Button onClick={()=>setIsOpen(false)}   to='/account/favorites'>View Favorites</Button>
-          <Button onClick={()=>setIsOpen(false)}  to={`/account`}>My Account</Button>
-          <Button onClick={() => {
+        <MenuItem onClick={handleClose}><InnerLink to='/directory'>View Houses</InnerLink></MenuItem>
+          <MenuItem onClick={handleClose}  ><InnerLink to='/account/favorites' >View Favorites</InnerLink></MenuItem>
+          {/* <MenuItem onClick={()=>setIsOpen(false)}  to={`/account`}>My Account</MenuItem>
+          <MenuItem onClick={() => {
             handleLogout()
             setIsOpen(false)
           }
-          } to='/'>Log Out</Button>
+          } to='/'>Log Out</MenuItem> */}
         </>
         :
         <>
-          <Button to='/directory' onClick={()=>setIsOpen(false)} >View Houses</Button>
+          {/* <Button to='/directory' onClick={()=>setIsOpen(false)} >View Houses</Button>
           <Button  to='/register' onClick={()=>setIsOpen(false)} >Register</Button>
-          <Button  to='/login' onClick={()=>setIsOpen(false)} >Log In</Button>
+          <Button  to='/login' onClick={()=>setIsOpen(false)} >Log In</Button> */}
         </>
       }
-      </Container>
+      </Menu>
       </div>
  
   )
