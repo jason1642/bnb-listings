@@ -2,9 +2,9 @@ import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useOutletContext } from "react-router-dom";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import moment from 'moment';
-import ChangePassword from './ChangePassword.tsx';
+import ChangePassword from './ChangePassword';
 
 interface IMyDetailsProps {
 }
@@ -88,8 +88,8 @@ const Info = styled.div`
   font-size: 12px;
 `;
 const MyDetails: React.FunctionComponent<IMyDetailsProps> = () => {
-  const [favoritesListData, currentUser] = useOutletContext();
-  const [toggleChange, setToggleChange] = useState<Boolean>(false)
+  const [ currentUser]: any = useOutletContext();
+  const [toggleChange, setToggleChange] = useState<boolean>(false)
   // console.log(currentUser)
   // User has # of favorites, date created, username change, password change, email change
   const handleClose = () => {
@@ -124,7 +124,7 @@ const MyDetails: React.FunctionComponent<IMyDetailsProps> = () => {
               onClick={()=>setToggleChange(true)}
               >Change Password</Button></div>
           <ChangePassword
-            styles={{
+            style={{
               display: toggleChange ? 'flex' : 'none'
             }}
             toggleChange={toggleChange}

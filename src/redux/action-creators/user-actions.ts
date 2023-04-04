@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as Constants from '../constants'
-const baseUrl = process.env.NODE_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://bnb-listings-production.up.railway.app' : 'http://localhost:5050';
 const api = axios.create({
   baseURL: baseUrl,
 });
@@ -62,7 +62,7 @@ export const logOutUser = () => {
 
 
 
-export const logInFail = (user) => {
+export const logInFail = (user: any) => {
 
   return {
     type: Constants.LOG_IN_FAIL,

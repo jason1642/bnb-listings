@@ -1,29 +1,29 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import siteLogo from '../../resources/treeLogo.svg';
-import Nav from './Nav.tsx'
+// import siteLogo from '../../resources/treeLogo.svg';
+import Nav from './Nav'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AppBar, Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 import { Toolbar } from '@mui/material';
-import { MenuItem } from '@mui/material';
-const Main = styled.div`
-  display: flex;
-  position: fixed;
-  width: 100%;
+// import { MenuItem } from '@mui/material';
+// const Main = styled.div`
+//   display: flex;
+//   position: fixed;
+//   width: 100%;
 
-  background-color: #807770;
-  z-index: 6000;
-  justify-content: space-between;
-  align-items: center;
-  @media (max-width: 480px) {
-    border-bottom: 1px solid black;
-    max-height: 70px;
-    height: 70px;
-  }
-`; 
+//   background-color: #807770;
+//   z-index: 6000;
+//   justify-content: space-between;
+//   align-items: center;
+//   @media (max-width: 480px) {
+//     border-bottom: 1px solid black;
+//     max-height: 70px;
+//     height: 70px;
+//   }
+// `; 
 
 
 const styles = {

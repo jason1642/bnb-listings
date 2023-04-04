@@ -1,6 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
-const baseUrl = process.env.NODE_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://bnb-listings-production.up.railway.app' : 'http://localhost:5050';
 console.log(process.env)
 console.log(baseUrl)
 
@@ -68,7 +68,7 @@ export const getAllFavorites = async (user_id: string) =>
 
 
 
-export const handleChangePassword = async (input) => {
+export const handleChangePassword = async (input: any) => {
   const token = localStorage.getItem("authToken");
   return await api.put('/api/user/change-password', _.assign(input, { token: token }))
     .then((res) => {
@@ -85,7 +85,7 @@ export const getAreaByName = async (name:string) =>
   await api.get(`/api/airbnb/listings/areas/${name}`).then(res=>res.data).catch(err=>err)
 
 
-export const getManyByQuery = async (query) => 
+export const getManyByQuery = async (query: any) => 
   await api.get('/api/airbnb/listings/query', query).then(res=>res.data).catch(err=>err)
 
 

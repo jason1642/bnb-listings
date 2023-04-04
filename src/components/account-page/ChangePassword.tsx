@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import {handleChangePassword} from '../../services/api-helpers.ts'
+import {handleChangePassword} from '../../services/api-helpers'
 interface IChangePasswordProps {
+handleClose: Function;
+toggleChange: boolean;
+style?: any;
 }
+
 
 
 const Container = styled.form`
@@ -27,7 +31,7 @@ const SubmitButton = styled.input`
   border-width: 0px;
   background-color: #65e365;
 `
-const Button = styled.div`
+const Button = styled.button`
   display: flex;
   justify-content: center;
   width: 45%;
@@ -46,14 +50,14 @@ const Button = styled.div`
 const Span = styled.div`
   
 `;
-const ChangePassword = ({handleClose, toggleChange}) => {
+const ChangePassword: React.FunctionComponent<IChangePasswordProps> = ({handleClose, toggleChange, style}) => {
   
   const [userInput, setUserInput] = useState({
     old_password: '',
     new_password: ''
   });
   const [formMessage, setFormMessage] = useState<string>('');
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     handleChangePassword(userInput).then((res) => {
       if (res) {
@@ -79,7 +83,8 @@ const ChangePassword = ({handleClose, toggleChange}) => {
   return (
     <Container
       style={{
-        display: toggleChange ? 'flex' : 'none'
+        display: toggleChange ? 'flex' : 'none',
+        ...style
       }}
       onSubmit={handleSubmit}>
 

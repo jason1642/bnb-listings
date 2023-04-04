@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import IntroSection from './intro-section/IntroSection.tsx';
-import SecondSection from './second-section/SecondSection.tsx';
-import ReviewSection from './review-section/ReviewSection.tsx';
-import { addFavorite } from '../../../services/api-helpers.ts';
+import IntroSection from './intro-section/IntroSection';
+import SecondSection from './second-section/SecondSection';
+import ReviewSection from './review-section/ReviewSection';
+import { addFavorite } from '../../../services/api-helpers';
 import { BsHeartFill, BsHeart } from 'react-icons/bs';
 import Swal  from'sweetalert2'
-const baseUrl = process.env.NODE_ENV === 'production' ? 'https://reactbnb-listings.herokuapp.com' : 'http://localhost:5050';
+
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://bnb-listings-production.up.railway.app' : 'http://localhost:5050';
+
+interface IComponentProps { 
+  currentUser: any;
+}
+
 console.log(baseUrl)
 const Container = styled.div`
   padding-top: 40px;
@@ -58,10 +64,10 @@ class Options {
   }
 }
 
-const SingleListingPage = ({currentUser}) => {
+const SingleListingPage:  React.FunctionComponent<IComponentProps>= ({currentUser}) => {
   const { _id } = useParams();
   const newOptions: {
-  } = new Options(_id)
+  } = new Options(_id!)
   const [listingData, setListingData] = useState<any>();
   const [isFavorited, setIsFavorited] = useState<Boolean>(false);
   useEffect(() => {
@@ -88,9 +94,9 @@ const SingleListingPage = ({currentUser}) => {
   type HandleFavType = () => any
 
   const handleAddFavorite: HandleFavType = async() => {
-    await addFavorite(currentUser._id, _id).then((res: string) => {
+    await addFavorite(currentUser._id, _id!).then((res: string) => {
       // console.log(res)
-      let timerInterval;
+      let timerInterval: any
       res === 'added' ? setIsFavorited(false) : setIsFavorited(true);
               return res === 'added'?  Swal.fire({
                 title: 'Added to favorites!',
@@ -98,7 +104,7 @@ const SingleListingPage = ({currentUser}) => {
             timer: 1000,
             didOpen: () => {
               Swal.showLoading()
-              const b: any = Swal.getHtmlContainer().querySelector('b')
+              const b: any = Swal.getHtmlContainer()?.querySelector('b')
               timerInterval = setInterval(() => {
               b.textContent = Swal.getTimerLeft()
             }, 100)},
