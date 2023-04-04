@@ -1,6 +1,7 @@
 import { BsDot } from "react-icons/bs";
 import styled from 'styled-components';
 import { useRef, useState, useEffect } from "react";
+import { Typography } from "@mui/material";
 const styles: any = {
   superhostTitle: {
     fontWeight: '600',
@@ -33,10 +34,15 @@ const Container = styled.div`
   display: flex;
   flex-direction:column ;
   width: 50%;
+  overflow: hidden;
   padding: 10px;
   /* border: 1px solid black; */
-  
-  height: 100%;
+  max-height: 480px;
+  /* -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box; */
+
   border-radius: 14px;
   @media (max-width: 480px){
     width: 100%;
@@ -91,7 +97,9 @@ const Header = styled.div`
   width: 100%;
 `
 const Main = styled.div`
-  flex-grow: 1;
+  /* flex-grow: 1; */
+
+  
 `;
 const SuperHost  = styled.div`
   width:100%;
@@ -103,15 +111,25 @@ const SuperHost  = styled.div`
   /* height: 60px; */
   padding: 3px 0;
 `;
-const Description = styled.div`
+const Description = styled(Typography)`
   padding: 10px;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.135), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   border-radius: 4px;
   margin-top: 5px;
-  font-size: 1.3rem;
+  font-size: 1.6em;
   font-weight: 400;
   text-align: left;
   line-height: 2rem;
+
+
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis; 
+
+
+
   padding: 15px 12px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   @media (max-width: 480px){
@@ -171,11 +189,11 @@ const LocationRow = styled.div`
 `;
 
 
-interface IInfoContainerProps {
-}
+// interface IInfoContainerProps {
+// }
 
 const InfoContainer: React.FunctionComponent<{data: any, openModal: Function}> = ({ data, openModal }) => {
-  const overflowingText = useRef<HTMLSpanElement | null>(null);
+  const overflowingText = useRef<HTMLDivElement | null>(null);
   const [overflowActive, setOverflowActive] = useState<boolean>(false);
   const [showMore, setShowMore] = useState<boolean>(false);
   // If host is superhost display banner, if not hide 
@@ -191,15 +209,16 @@ const InfoContainer: React.FunctionComponent<{data: any, openModal: Function}> =
   useEffect(() => {
     if (checkOverflow(overflowingText.current)) {
       setOverflowActive(true);
+      setShowMore(true)
       return;
     }
-
+    // console.log(overflowActive)
     setOverflowActive(false);
   }, [overflowActive]);
 
 
   return (
-    <Container>
+    <Container >
       <Header>
       <Title>
         {data.name}
@@ -233,19 +252,19 @@ const InfoContainer: React.FunctionComponent<{data: any, openModal: Function}> =
 
           </SuperHost>
         }
-        <Description>
+        <Description ref={overflowingText}>
           {data.summary}
           {data.access !== '' && <div style={{marginTop: '10px',}}>
           <ParagraphTitle>Guest Access: </ParagraphTitle>
           <Span>{data.access}</Span> </div>}
-          <Button
-          style={{display: showMore ? 'flex' : 'none'}}
-            onClick={()=>openModal()}
-          >Show more </Button>
+       
         
         </Description>
       </Main>
-      
+         <Button
+          style={{display: showMore ? 'flex' : 'none'}}
+            onClick={()=>openModal()}
+          >Show more </Button>
     </Container>
   )
 };

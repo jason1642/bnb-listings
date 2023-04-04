@@ -16,6 +16,7 @@ const Container = styled.div`
   display: flex;
   padding-top: 20px;
   /* border: 1px solid black; */
+
   @media (max-width: 480px){
     width: 100%;
     display: flex;
