@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducers from './reducers/index.ts';
+import reducers from './reducers/index';
 
 // =====================================
   // Wrap provider in index.js, like react-router

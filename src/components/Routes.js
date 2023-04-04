@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { useRoutes, Navigate } from 'react-router-dom';
-import HomePage from './home-page/Index.tsx'
+import HomePage from './home-page/Index'
 import Login from './login-register/Login'
 import Register from './login-register/Register';
 import { useSelector} from 'react-redux';
 import Directory from './rental-listings/directory/Index.jsx'
-import PropertyInfo from './rental-listings/single-listing-page/PropertyInfo.tsx'
-import AccountPage from './account-page/AccountPage.tsx';
-import MyDetails from './account-page/MyDetails.tsx';
+import PropertyInfo from './rental-listings/single-listing-page/PropertyInfo'
+import AccountPage from './account-page/AccountPage';
+import MyDetails from './account-page/MyDetails';
 import Favorites from './account-page/Favorites';
-import AreaNameListing from './rental-listings/area-name-listing/AreaNameListing.tsx';
+import AreaNameListing from './rental-listings/area-name-listing/AreaNameListing';
 const SiteRoutes = () => {
   
   const currentUser = useSelector(state => state.currentUser)

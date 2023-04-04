@@ -3,7 +3,7 @@ import {useState} from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import {slide as Menu} from 'react-burger-menu'
-import {removeToken} from '../../services/api-helpers.ts'
+import {removeToken} from '../../services/api-helpers'
 // import { bindActionCreators } from 'redux';
 // import { userActions } from '../../redux/index';
 // import { useDispatch } from 'react-redux';

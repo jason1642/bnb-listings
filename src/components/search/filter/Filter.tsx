@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 // import axios from 'axios';
 import qs from 'qs';
-import { getManyByQuery } from '../../../services/api-helpers.ts';
+import { getManyByQuery } from '../../../services/api-helpers';
 // import e from 'express';
 // import _ from 'lodash';
 const Container = styled.div`
@@ -71,7 +71,7 @@ const Title = styled.div`
 
 
 
-const Filter = ({handleFilter, listingsLength}) => {
+const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listingsLength: number}) => {
 
 
   // Filters: country, city, price, beds, accomodation(guests), options from amenities array 

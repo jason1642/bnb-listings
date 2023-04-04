@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 import Card from '../directory/Card'
-import {getAreaByName} from '../../../services/api-helpers.ts'
+import {getAreaByName} from '../../../services/api-helpers'
 interface IAreaNameListingProps {
 }
 
@@ -35,20 +35,20 @@ const CardContainer = styled.div`
 
 
 const AreaNameListing: React.FunctionComponent<IAreaNameListingProps> = (props) => {
-  const { name } = useParams();
+  const { name } = useParams<{name: string}>();
 
   const [areaListings, setAreaListings] = useState<Array<AnyObject>>([]);
   useEffect(() => {
 
     // uppercase first letter of each word
-    let capName: string = name.split(' ').map(str=>_.capitalize(str)).join(' ')
+    let capName: string = name?.split(' ').map(str=>_.capitalize(str)).join(' ')!
  
     
     getAreaByName(capName).then((res) => {
       setAreaListings(res)
     }, err => console.log(err))
     console.log(areaListings)
-  }, []);
+  }, [name]);
 
   useEffect(() => {
     console.log(areaListings)

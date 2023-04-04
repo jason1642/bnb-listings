@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Amenities } from './Amenities.tsx';
-import CostTable from './CostTable.tsx';
+import Amenities from './Amenities';
+import CostTable from './CostTable';
 
 const Container = styled.div`
   width: 100%;
@@ -19,9 +19,10 @@ const Container = styled.div`
 
 
 interface ISecondSectionProps {
+  data: any;
 }
 
-const SecondSection = ({data}) => {
+const SecondSection: React.FunctionComponent<ISecondSectionProps> = ({data}) => {
   return (
     <Container>
       {data && 

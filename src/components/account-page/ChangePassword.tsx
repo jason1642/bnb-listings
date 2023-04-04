@@ -31,7 +31,7 @@ const SubmitButton = styled.input`
   border-width: 0px;
   background-color: #65e365;
 `
-const Button = styled.button`
+const Button = styled.div`
   display: flex;
   justify-content: center;
   width: 45%;
@@ -72,7 +72,7 @@ const ChangePassword: React.FunctionComponent<IChangePasswordProps> = ({handleCl
       
     },err=>console.log(err))
   }
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const inputName = e.target.name;
     setUserInput(prev => ({ ...prev, [inputName]: e.target.value }))
     
@@ -106,9 +106,11 @@ const ChangePassword: React.FunctionComponent<IChangePasswordProps> = ({handleCl
         {formMessage}
       </Span>
       <SubmitButton
-        type='submit' />
+        type='submit'
+        
+        />
       <Button
-        onClick={handleClose}
+        onClick={()=>handleClose()}
       >
       Cancel
       </Button>

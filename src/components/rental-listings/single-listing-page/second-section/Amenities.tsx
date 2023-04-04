@@ -58,7 +58,10 @@ const amenitiesCollection = [
   
 ]
 
-const renderIcon = (val) => {
+interface IAmenitiesPropTypes {
+  data: any;
+}
+const renderIcon = (val: any) => {
   const obj = amenitiesCollection.find(e => e.name === val);
   return obj && obj.icon
  
@@ -118,7 +121,7 @@ const Item = styled.div`
 `;
 
 
-export function Amenities ({data}) {
+const Amenities: React.FunctionComponent<IAmenitiesPropTypes> = ({data}) =>{
   return (
     <Container>
       <Title>
@@ -128,7 +131,7 @@ export function Amenities ({data}) {
       {data && data.amenities.length > 1 ? 
       
       
-        data && data.amenities.map(ele => 
+        data && data.amenities.map((ele: any) => 
           ele !== 'translation missing: en.hosting_amenity_50' &&  <Item key={ele.name}>
             {data && renderIcon(ele) }<span style={{color: 'black',}}>{ele}</span>
           </Item>
@@ -139,3 +142,5 @@ export function Amenities ({data}) {
     </Container>
   );
 }
+
+export default Amenities;

@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import ImageContainer from './ImageContainer.tsx';
-import InfoContainer from './InfoContainer.tsx';
+import ImageContainer from './ImageContainer';
+import InfoContainer from './InfoContainer';
 import Modal from 'react-modal';
-import SeeMoreModal  from './SeeMoreModal.tsx';
+import SeeMoreModal  from './SeeMoreModal';
+
+
+interface IComponentProps {
+  data: any;
+}
 
 const Container = styled.div`
   width: 95%;
@@ -35,10 +40,10 @@ const customStyles = {
 };
 
 
-const IntroSection = ({ data }) => {
+const IntroSection: React.FunctionComponent<IComponentProps> = ({ data }) => {
   
 
-    let subtitle;
+    let subtitle: any
     const [modalIsOpen, setIsOpen] = React.useState(false);
   
     function openModal() {

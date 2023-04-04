@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Filter from '../../search/filter/Filter.tsx';
+import Filter from '../../search/filter/Filter';
 import Card from './Card'
 import SkeletionCards from '../../../resources/SkeltonCards';
 

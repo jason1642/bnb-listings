@@ -99,7 +99,7 @@ const Wrapper = styled.div`
 // const Total = styled.div`
   
 // `;
-const CostTable = ({ data }) => {
+const CostTable = ({ data }: {data: any}) => {
   const [numNights, setNumNights] = useState(1);
   // See accomdates for max extra
   const [numExtraPeople, setNumExtraPeople] = useState(0);

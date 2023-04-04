@@ -5,7 +5,7 @@ import { BsFillStarFill } from 'react-icons/bs';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import _ from 'lodash';
-import { SingleReview } from './SingleReview.tsx';
+import { SingleReview } from './SingleReview';
 
 const Container = styled.div`
   min-height: 70vh;
@@ -17,6 +17,7 @@ const Container = styled.div`
   width: 90%;
 `;
 interface IReviewSectionProps {
+  data: any;
 }
 const Title = styled.div`
   border-top: 1px solid black;
@@ -72,7 +73,7 @@ const Label = styled.div`
   overflow: hidden;
 `;
 
-const ReviewSection = ({ data }) => {
+const ReviewSection: React.FunctionComponent<IReviewSectionProps> = ({ data }) => {
   const { reviews, review_scores } = data;
   console.log(review_scores)
   useEffect(() => { 
@@ -99,7 +100,7 @@ const ReviewSection = ({ data }) => {
  
       </StatsTable>
 <ReviewContainer>
-        {reviews && reviews.map((e, i) => 
+        {reviews && reviews.map((e: any, i: number) => 
             <SingleReview
               key={i}
               data={e}
