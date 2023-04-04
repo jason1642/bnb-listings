@@ -87,6 +87,10 @@ const Button = styled.button`
 const Info = styled.div`
   font-size: 12px;
 `;
+const Image = styled.img`
+  width: 100%;
+`;
+
 const MyDetails: React.FunctionComponent<IMyDetailsProps> = () => {
   const [ currentUser]: any = useOutletContext();
   const [toggleChange, setToggleChange] = useState<boolean>(false)
@@ -105,6 +109,10 @@ const MyDetails: React.FunctionComponent<IMyDetailsProps> = () => {
 
       <Main>  
         <SideOne>
+
+          <Image 
+          src="https://media.istockphoto.com/id/1214428300/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=vftMdLhldDx9houN4V-g3C9k0xl6YeBcoB_Rk6Trce0=" 
+          alt='user account avatar placeholder'/>
           <Info>
             Assertively utilize adaptive customer service for future-proof platforms. Completely drive optimal markets.
           </Info>

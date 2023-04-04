@@ -114,7 +114,7 @@ const SuggestionCards = () => {
           height='240'
           // alt='location'
          />
-        <CardContent>
+        <CardContent sx={{backgroundColor: '#e4e8f5'}}>
           <Title>{data.name}</Title>
           <Text>
             {data.description}
