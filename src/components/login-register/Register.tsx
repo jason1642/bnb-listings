@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
@@ -76,30 +76,30 @@ const Register = () => {
     password: ''
   });
   const dispatch = useDispatch();
-  const { registerUser } = bindActionCreators(userActions, dispatch);
+  const { registerUser }: {registerUser: any} = bindActionCreators(userActions, dispatch);
   const navigate = useNavigate()
 
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setUserInput(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    let timerInterval
+    let timerInterval: any
 
-    await registerUser(userInput).then(res => {
+    await registerUser(userInput).then((res: any) => {
       Swal.fire({
         title: 'Successfully created account!!',
         html: '...redirecting you to the Log In page now',
-        timer: 2000,
+        timer: 1500,
         timerProgressBar: true,
         didOpen: () => {
-          Swal.showLoading()
-          const b = Swal.getHtmlContainer().querySelector('b')
-          timerInterval = setInterval(() => {
-            b.textContent = Swal.getTimerLeft()
-          }, 100)
+          // Swal.showLoading()
+          // const b = Swal.getHtmlContainer()?.querySelector('b')
+          // timerInterval = setInterval(() => {
+          //   b.textContent = Swal.getTimerLeft()
+          // }, 100)
         },
         willClose: () => {
           clearInterval(timerInterval)
@@ -112,7 +112,7 @@ const Register = () => {
         }
       })
      
-    },err=>console.log('register error', err))
+    },(err: any)=>console.log('register error', err))
 
   }
 

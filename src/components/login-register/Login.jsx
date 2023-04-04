@@ -96,7 +96,7 @@ const Login = () => {
       Swal.fire({
         title: 'Successfully logged in!',
         html: '...redirecting you to the Home page now',
-        timer: 2000,
+        timer: 1500,
         timerProgressBar: true,
         didOpen: () => {
           Swal.showLoading()
