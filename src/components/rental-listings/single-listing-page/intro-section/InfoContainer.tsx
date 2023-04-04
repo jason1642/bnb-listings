@@ -1,6 +1,6 @@
 import { BsDot } from "react-icons/bs";
 import styled from 'styled-components';
-
+import { useRef, useState, useEffect } from "react";
 const styles: any = {
   superhostTitle: {
     fontWeight: '600',
@@ -175,10 +175,28 @@ interface IInfoContainerProps {
 }
 
 const InfoContainer: React.FunctionComponent<{data: any, openModal: Function}> = ({ data, openModal }) => {
-  
+  const overflowingText = useRef<HTMLSpanElement | null>(null);
+  const [overflowActive, setOverflowActive] = useState<boolean>(false);
+  const [showMore, setShowMore] = useState<boolean>(false);
   // If host is superhost display banner, if not hide 
   //display host picture
   // Review section
+  const checkOverflow = (textContainer: HTMLSpanElement | null): boolean => {
+    if (textContainer)
+      return (
+        textContainer.offsetHeight < textContainer.scrollHeight || textContainer.offsetWidth < textContainer.scrollWidth
+      );
+    return false;
+  };
+  useEffect(() => {
+    if (checkOverflow(overflowingText.current)) {
+      setOverflowActive(true);
+      return;
+    }
+
+    setOverflowActive(false);
+  }, [overflowActive]);
+
 
   return (
     <Container>
@@ -221,6 +239,7 @@ const InfoContainer: React.FunctionComponent<{data: any, openModal: Function}> =
           <ParagraphTitle>Guest Access: </ParagraphTitle>
           <Span>{data.access}</Span> </div>}
           <Button
+          style={{display: showMore ? 'flex' : 'none'}}
             onClick={()=>openModal()}
           >Show more </Button>
         

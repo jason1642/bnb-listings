@@ -12,10 +12,10 @@ interface IComponentProps {
 
 const Container = styled.div`
   width: 95%;
-  min-height: 55vh;
+  /* min-height: 55vh; */
   display: flex;
   padding-top: 20px;
-
+  /* border: 1px solid black; */
   @media (max-width: 480px){
     width: 100%;
     display: flex;
@@ -43,7 +43,7 @@ const customStyles = {
 const IntroSection: React.FunctionComponent<IComponentProps> = ({ data }) => {
   
 
-    let subtitle: any
+    // let subtitle: any
     const [modalIsOpen, setIsOpen] = React.useState(false);
   
     function openModal() {
@@ -52,7 +52,7 @@ const IntroSection: React.FunctionComponent<IComponentProps> = ({ data }) => {
   
     function afterOpenModal() {
       // references are now sync'd and can be accessed.
-      subtitle.style.color = '#f00';
+      // subtitle.style.color = '#f00';
     }
   
     function closeModal() {

@@ -29,21 +29,25 @@ const Container = styled.div`
 `;
 
 const FavoriteButton = styled.button`
-  color: black;
+  color: white;
   /* border-radius: 13px; */
   border-width: 0px;
   background-color: transparent;
   /* padding: 4px 10px; */
-  width: 180px;
+  width: 170px;
   
 `
+// Wrapper for favorite button
 const Wrapper = styled.div`
-   color: black;
+  display: flex;
+  /* border: 1px solid black; */
+   color: white;
   border-radius: 13px;
   border-width: 0px;
   margin-left: 180px;
+  margin-top: 1rem;
   align-self: flex-start;
-  background-color: #7dfb61;
+  background-color: #3683ff;
   padding: 4px 10px;
   &:hover{
     cursor: pointer;
@@ -84,7 +88,7 @@ const SingleListingPage:  React.FunctionComponent<IComponentProps>= ({currentUse
 
   useEffect(() => {
     // console.log(currentUser)
-    const isInFavorites = (listingData && currentUser.authenticated === true) ? currentUser.favorites.findIndex((ele: string) => ele === listingData._id) : -1
+    const isInFavorites = listingData && currentUser ? currentUser.favorites.findIndex((ele: string) => ele === listingData._id) : -1
     console.log(isInFavorites)
     isInFavorites !== -1 && setIsFavorited(true);
     // console.log(listingData)
@@ -133,8 +137,8 @@ const SingleListingPage:  React.FunctionComponent<IComponentProps>= ({currentUse
       <IntroSection
         data={listingData} />
     
-      {currentUser.authenticated &&
-        <Wrapper>{isFavorited ?  <BsHeartFill style={{ color: 'red' }} /> : <BsHeart style={{ color: 'red' }} />}
+      {currentUser &&
+        <Wrapper>{isFavorited ?  <BsHeartFill style={{ fontSize: '1.2em',color: 'red' }} /> : <BsHeart style={{  fontSize: '1.2em', color: 'red' }} />}
           
         <FavoriteButton onClick={handleAddFavorite}>
             {isFavorited ? 'Remove from' : 'Add to'} favorites

@@ -17,7 +17,7 @@ const Title = styled.div`
 
 const Content = styled.div`
   font-weight: 300;
-  font-size: 11px;
+  font-size: 1em;
   line-height: 23px;
 `;
 const Wrapper = styled.div`
@@ -36,16 +36,20 @@ const SeeMoreModal: React.FunctionComponent<{closeModal: Function, data: any}> =
         {data.summary}
     </Content>
     </Wrapper>
-    <Wrapper>
+
+    {data.space && <Wrapper>
     <Title>The space</Title>
     <Content>{data.space}</Content>
-    </Wrapper>
-    <Wrapper>
+    </Wrapper>}
+
+    {data.access && <Wrapper>
     <Title>Guest access</Title>
       <Content>
         {data.access}
       </Content>
-      </Wrapper>
+      </Wrapper>}
+
+
         {/* <button onClick={closeModal}>close</button> */}
        
   </Container>

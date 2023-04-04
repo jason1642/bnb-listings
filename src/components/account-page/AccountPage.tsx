@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { getAllFavorites } from '../../services/api-helpers'
-import {  useVerifyUserQuery } from '../../redux/features/userApi';
 import Nav from './Nav'
+import { userApi } from '../../redux/features/userApi';
 
 interface IAccountPageProps {
 }
@@ -27,7 +27,7 @@ const Container = styled.div`
 
 
 const AccountPage: React.FunctionComponent<IAccountPageProps> = () => {
-   const { data: {currentUser}, isLoading } = useVerifyUserQuery<{data: any, isLoading: boolean}>()
+   const {data: currentUser, isLoading } = userApi.endpoints.verifyUser.useQueryState()
 
 
   const [favoritesListData, setFavoritesListData] = useState();
@@ -67,7 +67,6 @@ const AccountPage: React.FunctionComponent<IAccountPageProps> = () => {
  useEffect(() => {
    console.log(favoritesListData)
    console.log(currentUser)
-   console.log(isLoading)
 
  }, [favoritesListData, currentUser]);
   return (

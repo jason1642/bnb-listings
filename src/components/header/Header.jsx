@@ -7,6 +7,7 @@ import { AppBar, Button } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 import { Toolbar } from '@mui/material';
+import { userApi } from '../../redux/features/userApi';
 
 const styles = {
   logo: {
@@ -53,7 +54,7 @@ const ButtonLink = styled(Link)`
   }
 `
 const Index = () => {
-  const {data, isLoading } = useVerifyUserQuery()
+  const {data, isLoading } = userApi.endpoints.verifyUser.useQueryState()
 
   React.useEffect(() => {
     // console.log(data)
