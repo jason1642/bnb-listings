@@ -105,5 +105,6 @@ export const verifyUser = async () => {
 
 export const removeToken = () => {
   // Accepts type string, number, boolean
+  localStorage.clear();
   api.defaults.headers.common.authorization = false;
 };

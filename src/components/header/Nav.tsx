@@ -94,19 +94,10 @@ const InnerLink = styled(Link)`
 //   justify-content: center;
 //   align-items: center;
 // `   
-const handleLogout = ( ) => {
-  localStorage.clear();
-  removeToken();
-  console.log('You are logged out')
-  window.location.reload();
-}
-
 
 
 const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  // const dispatch = useDispatch()
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -137,10 +128,6 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
       open={open}       
       onClose={handleClose}
       anchorEl={anchorEl}
-
-      // styles={styles}   
-      // outerContainerId={"outer-container"}
-      // pageWrapId={"page-wrap"}
     >
 
       {currentUser.authenticated ?
@@ -148,7 +135,11 @@ const Nav: React.FunctionComponent<INavProps> = ({ currentUser }: INavProps) => 
         <MenuItem onClick={handleClose}><InnerLink to='/directory'>View Houses</InnerLink></MenuItem>,
           <MenuItem onClick={handleClose}><InnerLink to='/account/favorites' >View Favorites</InnerLink></MenuItem>,
           <MenuItem onClick={handleClose}><InnerLink to='/account' >My Account</InnerLink></MenuItem>,
-          <MenuItem onClick={handleClose}><InnerLink to='/' >Log Out</InnerLink></MenuItem> 
+          <MenuItem onClick={()=> {
+            handleClose()
+            removeToken()
+            window.location.reload();
+          }}><InnerLink to='/' >Log Out</InnerLink></MenuItem> 
 
         ]
         :

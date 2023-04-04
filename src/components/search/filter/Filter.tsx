@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // import axios from 'axios';
 import qs from 'qs';
 import { getManyByQuery } from '../../../services/api-helpers';
+import { CircularProgress } from '@mui/material';
 // import e from 'express';
 // import _ from 'lodash';
 const Container = styled.div`
@@ -209,9 +210,9 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
       
       {/* <Group></Group> */}
     </Form>
-    <SearchBanner>
+    {listingsLength < 1 ? <CircularProgress sx={{marginTop: '15px'}} /> : <SearchBanner>
       Displaying {listingsLength} results
-    </SearchBanner>
+    </SearchBanner>}
   </Container> );
 }
  
