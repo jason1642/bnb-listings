@@ -30,10 +30,10 @@ export const registerUser = async (registerData: RegisterData, navigate: Functio
   
 };
 
-interface LoginData {
-  username: string, 
-  password: string
-}
+// interface LoginData {
+//   username: string, 
+//   password: string
+// }
 // Uses /api/user/auth post to verify credentials, then grants a jwt and user info
 
 // export const apiLogIn = async (loginData: LoginData) => 

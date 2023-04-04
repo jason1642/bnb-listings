@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {  useVerifyUserQuery } from '../../redux/features/userApi';
 import Nav from './Nav'
 import { Link } from 'react-router-dom';
 import { AppBar, Button } from '@mui/material';

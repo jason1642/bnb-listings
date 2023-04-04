@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Filter from '../../search/filter/Filter';
 import Card from './Card'
@@ -22,14 +22,14 @@ const Container = styled.div`
 const Header = styled.div`
   
   `
-const Title = styled.div`
-  font-size: 35px;
-  font-weight: 300;
-  margin: 8px 0 10px 0;
-  @media (max-width: 480px){
-    display: none;
-  }
-`
+// const Title = styled.div`
+//   font-size: 35px;
+//   font-weight: 300;
+//   margin: 8px 0 10px 0;
+//   @media (max-width: 480px){
+//     display: none;
+//   }
+// `
 const CardContainer = styled.div`
   display: flex;
   width: 90%;

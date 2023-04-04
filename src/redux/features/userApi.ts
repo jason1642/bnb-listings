@@ -5,10 +5,10 @@ export interface UserState {
     isAuthenticated: boolean, 
     isLoading: boolean,
   }
-interface UserLoginSchema {
-    username: string;
-    password: string;
-}
+// interface UserLoginSchema {
+//     username: string;
+//     password: string;
+// }
 
 
 // Define a service using a base URL and expected endpoints

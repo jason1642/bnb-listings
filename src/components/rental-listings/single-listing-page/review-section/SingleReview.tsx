@@ -23,6 +23,7 @@ const Container = styled.div`
   /* padding: 6px; */
   /* height: 220px; */
   /* overflow-y: scroll; */
+  background-color: gainsboro;
   min-height:240px ;
   text-align: left;
   border-radius: 15px;

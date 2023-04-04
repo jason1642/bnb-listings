@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-// import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import _ from 'lodash';
 import Card from '../directory/Card'
@@ -48,6 +47,7 @@ const AreaNameListing: React.FunctionComponent<IAreaNameListingProps> = (props) 
       setAreaListings(res)
     }, err => console.log(err))
     console.log(areaListings)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name]);
 
   useEffect(() => {

@@ -12,12 +12,12 @@ const Container = styled.div`
   height: 100%;
   padding: 60px 0;
 `;
-const Title = styled.div`
-  font-size: 30px;
-  margin: 12px 0;
-  padding: 0;
-  color: white;
-`;
+// const Title = styled.div`
+//   font-size: 30px;
+//   margin: 12px 0;
+//   padding: 0;
+//   color: white;
+// `;
 const MainSection = styled.div`
   display: flex;
   align-items: center;

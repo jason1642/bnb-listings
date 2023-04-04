@@ -4,7 +4,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 
 import {
-  Container,Image, Country, PropertyType, ImageContainer, InfoContainer, Name, Title, Span, Price,RowOne,RowTwo, RowThree, ScoreNumber, FavButton} from './card-styles'
+  Container,Image, PropertyType, ImageContainer, InfoContainer, Name, Span, Price,RowOne,RowTwo, RowThree, ScoreNumber} from './card-styles'
 
 
 
