@@ -26,32 +26,32 @@ export const logInUser = (userInput: any) => {
         payload: userInput
       })})}
 
-export const verifyUser = () => {
-//   const config = {
-//     headers: { Authorization: `Bearer ${token}` }
-// };
-return (dispatch: any) => {
-  const token = localStorage.getItem('authToken')
-    // console.log(token)
+// export const verifyUser = () => {
+// //   const config = {
+// //     headers: { Authorization: `Bearer ${token}` }
+// // };
+// return (dispatch: any) => {
+//   const token = localStorage.getItem('authToken')
+//     // console.log(token)
 
-    return api.post('/api/user/auth/verify',
-      {
-      token: token
-    }).then(res => {
-      // console.log("success verify")
-      return dispatch({
-        type: Constants.VERIFY_USER,
-        payload: res.data
-      })
+//     return api.post('/api/user/auth/verify',
+//       {
+//       token: token
+//     }).then(res => {
+//       // console.log("success verify")
+//       return dispatch({
+//         type: Constants.VERIFY_USER,
+//         payload: res.data
+//       })
 
-    }, () => dispatch({
-      type: Constants.VERIFY_USER_FAIL,
-      payload: undefined
-    }))
+//     }, () => dispatch({
+//       type: Constants.VERIFY_USER_FAIL,
+//       payload: undefined
+//     }))
   
     
-  }
-}
+//   }
+// }
 export const logOutUser = () => {
 
   return (dispatch: any) => dispatch({

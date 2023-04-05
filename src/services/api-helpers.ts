@@ -95,10 +95,10 @@ export const verifyUser = async () => {
   const token = localStorage.getItem("authToken");
   if (token) {
     api.defaults.headers.common.authorization = `Bearer ${token}`;
-    return await api.get('/user/auth/verify')
+    return await api.post('/api/user/auth/verify', {token: token})
       .then(res => {
         return res.data
-      }, err => null)
+      }, err => undefined)
   }
   return false;
 }

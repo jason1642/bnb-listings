@@ -10,13 +10,11 @@ export interface UserState {
 //     password: string;
 // }
 
-
+console.log(process.env.NODE_ENV)
 // Define a service using a base URL and expected endpoints
 export const userApi = createApi({
     reducerPath: 'userApi',
-    baseQuery: fetchBaseQuery({ prepareHeaders: (headers, {getState})=>{ 
-        headers.set('authorization', `Bearer ${localStorage.getItem('authToken')}`)
-    }, baseUrl: process.env.NODE_ENV === 'production' ? 'https://bnb-listings-production.up.railway.app/api' : 'http://localhost:5050/api', }), 
+    baseQuery: fetchBaseQuery({  baseUrl:  'http://localhost:5050/api/user/auth'}), 
     tagTypes: ['User'],
     
     endpoints: (builder) => ({
@@ -28,7 +26,7 @@ export const userApi = createApi({
       loginUser: builder.query({
         query: (userForm: any) => {
             return({ 
-          url: '/auth/',
+          url: '/',
           method: 'POST',
           headers: { 
             'Accept': 'application/json',
@@ -43,11 +41,14 @@ export const userApi = createApi({
 
       verifyUser: builder.query<any, void>({
         query: () => ({
-          url: '/user/auth/verify',
-          
+          url: '/verify',
+          headers: { 
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
           method: 'POST',
           body: {token: localStorage.getItem('authToken')},
-        //   credentials: "include",
+        //   credentials: "include", 
           provideTags: ['User']
           // Include the entire post object as the body of the request
         //   body: userForm

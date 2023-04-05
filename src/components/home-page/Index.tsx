@@ -89,7 +89,7 @@ const Index: React.FunctionComponent<IIndexProps> = ({currentUser}) => {
       </Section>
 
 
-      {!currentUser.authenticated ?
+      {!currentUser ?
       <Section>
         <LoginPromo />
         </Section>

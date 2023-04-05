@@ -20,16 +20,15 @@ app.use(cors());
 app.use('/api/user', userRouter); 
 app.use('/api/user/auth', authRouter);
 app.use('/api/airbnb/listings', airbnbHomeRouter);
-app.listen(port, () => console.log('listening on port ' + port));
 
  
 
 
  
  
+console.log(process.env)
 
 connectDatabase();
-
 
 
 
@@ -72,3 +71,6 @@ app.use(function (err, req, res, next) {
     message: err.message,
     error: err
   });});
+  
+  
+  app.listen(port, () => console.log('listening on port ' + port));
