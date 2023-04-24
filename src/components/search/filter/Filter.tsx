@@ -172,7 +172,7 @@ const Filter = ({handleFilter, listingsLength}: {handleFilter: Function, listing
   useEffect(() => {
     console.log(searchResults)
     handleFilter(searchResults)
-                // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchResults])
            
   // If turned true, query and add to array, if turned false filter array of prop

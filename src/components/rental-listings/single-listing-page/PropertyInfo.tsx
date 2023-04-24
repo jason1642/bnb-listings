@@ -76,11 +76,11 @@ const SingleListingPage:  React.FunctionComponent<IComponentProps>= ({currentUse
   const [isFavorited, setIsFavorited] = useState<Boolean>(false);
   useEffect(() => {
     // console.log(_id)
-    console.log(currentUser)
+    // console.log(currentUser)
 
     axios(newOptions).then(res => {
       setListingData(res.data);
-      console.log(res)
+      // console.log(res)
     }, err=> console.log(err))
             // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser])

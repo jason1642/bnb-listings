@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -126,7 +125,7 @@ const CostTable = ({ data }: {data: any}) => {
     }
   }
   useEffect(() => {
-    console.log(numExtraPeople)
+    // console.log(numExtraPeople)
   },[numExtraPeople])
   return (
     <Container>
